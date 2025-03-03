@@ -1,0 +1,343 @@
+comshiro@Ubuntu24:~/PF$ hgci
+Command 'hgci' not found, did you mean:
+  command 'ghci' from deb ghc (9.4.7-2)
+Try: sudo apt install <deb name>
+comshiro@Ubuntu24:~/PF$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load curs2.hs
+
+<no location info>: error: Can't find curs2.hs
+Failed, no modules loaded.
+ghci> :q
+Leaving GHCi.
+comshiro@Ubuntu24:~/PF$ cd week2
+comshiro@Ubuntu24:~/PF/week2$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load curs2.hs
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:2:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+  |
+2 | *)
+  | ^
+Failed, no modules loaded.
+ghci> :load curs2.hs
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+Ok, one module loaded.
+ghci> :reload
+[1 of 2] Compiling Main             ( curs2.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> add 13 2
+15
+ghci> :reload
+[1 of 2] Compiling Main             ( curs2.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> prod 5
+120
+ghci> :reload
+[1 of 2] Compiling Main             ( curs2.hs, interpreted ) [Source file changed]
+
+curs2.hs:23:14: error:
+    • Couldn't match expected type ‘Int -> Int’ with actual type ‘Int’
+    • The function ‘prod’ is applied to two value arguments,
+        but its type ‘Int -> Int’ has only one
+      In the expression: prod (n - 1) (a * n)
+      In an equation for ‘prod''’: prod'' n a = prod (n - 1) (a * n)
+   |
+23 | prod'' n a = prod (n-1) (a*n) -- a = acumulator 
+   |              ^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> prod'' 5 0
+
+<interactive>:8:1: error:
+    Variable not in scope: prod'' :: t0 -> t1 -> t
+ghci> prod'' 5 1
+
+<interactive>:9:1: error:
+    Variable not in scope: prod'' :: t0 -> t1 -> t
+ghci> prod'' 5
+
+<interactive>:10:1: error: Variable not in scope: prod'' :: t0 -> t
+ghci> prod'' 5 1
+
+<interactive>:11:1: error:
+    Variable not in scope: prod'' :: t0 -> t1 -> t
+ghci> :reload
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:23:14: error:
+    • Couldn't match expected type ‘Int -> Int’ with actual type ‘Int’
+    • The function ‘prod’ is applied to two value arguments,
+        but its type ‘Int -> Int’ has only one
+      In the expression: prod (n - 1) (a * n)
+      In an equation for ‘prod''’: prod'' n a = prod (n - 1) (a * n)
+   |
+23 | prod'' n a = prod (n-1) (a*n) -- a = acumulator 
+   |              ^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :reload
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+Ok, one module loaded.
+ghci> prod'' 5 1
+120
+ghci> :reloaf
+unknown command ':reloaf'
+use :? for help.
+ghci> :reload
+[1 of 2] Compiling Main             ( curs2.hs, interpreted ) [Source file changed]
+
+curs2.hs:26:10: error: Not in scope: type constructor or class ‘-’
+   |
+26 | fibo::Int-Int
+   |          ^
+Failed, no modules loaded.
+ghci> :reload
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:26:10: error: Not in scope: type constructor or class ‘-’
+   |
+26 | fibo::Int-Int
+   |          ^
+Failed, no modules loaded.
+ghci> :reload
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+Ok, one module loaded.
+ghci> fibo 32
+2178309
+ghci> fibo 67
+^Z
+[1]+  Stopped                 ghci
+comshiro@Ubuntu24:~/PF/week2$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load curs2.hs
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+Ok, one module loaded.
+ghci> fibo' 8 0 1
+21
+ghci> fibo 8
+21
+ghci> sin
+
+<interactive>:4:1: error:
+    • No instance for (Show (Double -> Double))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+ghci> sin 30
+-0.9880316240928618
+ghci> sin pi
+1.2246467991473532e-16
+ghci> sin (pi * 20 / 180)
+0.3420201433256687
+ghci> cos (pi * 20 / 180)
+0.9396926207859084
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted ) [Source file changed]
+
+curs2.hs:51:7: error: Expression syntax in pattern: 'n
+   |
+51 | fibo' 'n = fibo_aux n 0 1
+   |       ^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:40:1: error:
+    Multiple declarations of ‘fibo_aux’
+    Declared at: curs2.hs:33:1
+                 curs2.hs:40:1
+   |
+40 | fibo_aux 0 a b =a
+   | ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:43:1: error:
+    The type signature for ‘fibo'’ lacks an accompanying binding
+    Suggested fix:
+      Perhaps use one of these:
+        ‘fibo’ (Defined at curs2.hs:28:1),
+        ‘fibo''’ (Defined at curs2.hs:44:1)
+   |
+43 | fibo' :: Int -> Int
+   | ^^^^^
+
+curs2.hs:96:1: error:
+    The type signature for ‘f1’ lacks an accompanying binding
+    Suggested fix: Perhaps use ‘f’ (Defined at curs2.hs:4:1)
+   |
+96 | f1::Int->Int->Int->Int
+   | ^^
+
+curs2.hs:102:9: error:
+    Not in scope: type constructor or class ‘Flaot’
+    Suggested fix: Perhaps use ‘Float’ (imported from Prelude)
+    |
+102 | xCoord::Flaot -> FLoat
+    |         ^^^^^
+
+curs2.hs:102:18: error:
+    Not in scope: type constructor or class ‘FLoat’
+    Suggested fix: Perhaps use ‘Float’ (imported from Prelude)
+    |
+102 | xCoord::Flaot -> FLoat
+    |                  ^^^^^
+
+curs2.hs:104:9: error:
+    Not in scope: type constructor or class ‘Flaot’
+    Suggested fix: Perhaps use ‘Float’ (imported from Prelude)
+    |
+104 | yCoord::Flaot -> FLoat
+    |         ^^^^^
+
+curs2.hs:104:18: error:
+    Not in scope: type constructor or class ‘FLoat’
+    Suggested fix: Perhaps use ‘Float’ (imported from Prelude)
+    |
+104 | yCoord::Flaot -> FLoat
+    |                  ^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:43:1: error:
+    The type signature for ‘fibo'’ lacks an accompanying binding
+    Suggested fix:
+      Perhaps use one of these:
+        ‘fibo’ (Defined at curs2.hs:28:1),
+        ‘fibo''’ (Defined at curs2.hs:44:1)
+   |
+43 | fibo' :: Int -> Int
+   | ^^^^^
+
+curs2.hs:96:1: error:
+    The type signature for ‘f1’ lacks an accompanying binding
+    Suggested fix: Perhaps use ‘f’ (Defined at curs2.hs:4:1)
+   |
+96 | f1::Int->Int->Int->Int
+   | ^^
+Failed, no modules loaded.
+ghci> type (True, 'c')
+
+<interactive>:13:17: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+ghci> :type (True, 'c')
+(True, 'c') :: (Bool, Char)
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:43:1: error:
+    The type signature for ‘fibo'’ lacks an accompanying binding
+    Suggested fix:
+      Perhaps use one of these:
+        ‘fibo’ (Defined at curs2.hs:28:1),
+        ‘fibo''’ (Defined at curs2.hs:44:1)
+   |
+43 | fibo' :: Int -> Int
+   | ^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+Ok, one module loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted ) [Source file changed]
+
+curs2.hs:107:1: error:
+    The type signature for ‘coord’ lacks an accompanying binding
+    Suggested fix: Perhaps use ‘coords’ (Defined at curs2.hs:108:1)
+    |
+107 | coord::Float->Float->Float
+    | ^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:108:16: error:
+    • Couldn't match expected type: Float -> Float
+                  with actual type: (Float, Float)
+    • In the expression: (xCoord angle, yCoord angle)
+      In an equation for ‘coords’:
+          coords angle = (xCoord angle, yCoord angle)
+    |
+108 | coords angle = (xCoord angle, yCoord angle)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+Ok, one module loaded.
+ghci> coords 30
+(0.8660254,0.5)
+ghci> fibo 12
+144
+ghci> fst('c', fibo 35)
+'c'
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted ) [Source file changed]
+
+curs2.hs:114:6: error: Expression syntax in pattern: 'x
+    |
+114 | pred 'x = x-1
+    |      ^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:118:28: error: Variable not in scope: x :: Int
+    |
+118 | add' x' y = succ(add(pred' x) y)
+    |                            ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:118:30: error: Variable not in scope: x :: Int
+    |
+118 | add' x' y = succ(add' (pred' x) y)
+    |                              ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:118:13: error:
+    Variable not in scope: add'' :: Int -> Int -> Int
+    Suggested fix: Perhaps use ‘add'’ (line 117)
+    |
+118 | add' x' y = add'' (pred' x) (succ' y)
+    |             ^^^^^
+
+curs2.hs:118:26: error: Variable not in scope: x :: Int
+    |
+118 | add' x' y = add'' (pred' x) (succ' y)
+    |                          ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:120:1: error:
+    The type signature for ‘gcd_extended’ lacks an accompanying binding
+    |
+120 | gcd_extended::Int->Int->(Int, Int, Int)
+    | ^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:125:30: error: Operator applied to too few arguments: >
+    |
+125 | fst_3uple::(Int, Int, Int) - > Int
+    |                              ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+
+curs2.hs:118:25: error: Variable not in scope: x :: Int
+    |
+118 | add' x' y = add' (pred' x) (succ' y)
+    |                         ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs2.hs, interpreted )
+Ok, one module loaded.
+ghci> 

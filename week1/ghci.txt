@@ -1,0 +1,486 @@
+comshiro@Ubuntu24:~$ ghci
+GHCi, version 9.4.7: https://www.haskell.org/ghc/  :? for help
+ghci> :?
+ Commands available from the prompt:
+
+   <statement>                 evaluate/run <statement>
+   :                           repeat last command
+   :{\n ..lines.. \n:}\n       multiline command
+   :add [*]<module> ...        add module(s) to the current target set
+   :browse[!] [[*]<mod>]       display the names defined by module <mod>
+                               (!: more details; *: all top-level names)
+   :cd <dir>                   change directory to <dir>
+   :cmd <expr>                 run the commands returned by <expr>::IO String
+   :complete <dom> [<rng>] <s> list completions for partial input string
+   :ctags[!] [<file>]          create tags file <file> for Vi (default: "tags")
+                               (!: use regex instead of line number)
+   :def[!] <cmd> <expr>        define command :<cmd> (later defined command has
+                               precedence, ::<cmd> is always a builtin command)
+                               (!: redefine an existing command name)
+   :doc <name>                 display docs for the given name (experimental)
+   :edit <file>                edit file
+   :edit                       edit last module
+   :etags [<file>]             create tags file <file> for Emacs (default: "TAGS")
+   :help, :?                   display this list of commands
+   :info[!] [<name> ...]       display information about the given names
+                               (!: do not filter instances)
+   :instances <type>           display the class instances available for <type>
+   :issafe [<mod>]             display safe haskell information of module <mod>
+   :kind[!] <type>             show the kind of <type>
+                               (!: also print the normalised type)
+   :load[!] [*]<module> ...    load module(s) and their dependents
+                               (!: defer type errors)
+   :main [<arguments> ...]     run the main function with the given arguments
+   :module [+/-] [*]<mod> ...  set the context for expression evaluation
+   :quit                       exit GHCi
+   :reload[!]                  reload the current module set
+                               (!: defer type errors)
+   :run function [<arguments> ...] run the function with the given arguments
+   :script <file>              run the script <file>
+   :type <expr>                show the type of <expr>
+   :type +d <expr>             show the type of <expr>, defaulting type variables
+   :unadd <module> ...         remove module(s) from the current target set
+   :undef <cmd>                undefine user-defined command :<cmd>
+   ::<cmd>                     run the builtin command
+   :!<command>                 run the shell command <command>
+
+ -- Commands for debugging:
+
+   :abandon                    at a breakpoint, abandon current computation
+   :back [<n>]                 go back in the history N steps (after :trace)
+   :break [<mod>] <l> [<col>]  set a breakpoint at the specified location
+   :break <name>               set a breakpoint on the specified function
+   :continue [<count>]         resume after a breakpoint [and set break ignore count]
+   :delete <number> ...        delete the specified breakpoints
+   :delete *                   delete all breakpoints
+   :disable <number> ...       disable the specified breakpoints
+   :disable *                  disable all breakpoints
+   :enable <number> ...        enable the specified breakpoints
+   :enable *                   enable all breakpoints
+   :force <expr>               print <expr>, forcing unevaluated parts
+   :forward [<n>]              go forward in the history N step s(after :back)
+   :history [<n>]              after :trace, show the execution history
+   :ignore <breaknum> <count>  for break <breaknum> set break ignore <count>
+   :list                       show the source code around current breakpoint
+   :list <identifier>          show the source code for <identifier>
+   :list [<module>] <line>     show the source code around line number <line>
+   :print [<name> ...]         show a value without forcing its computation
+   :sprint [<name> ...]        simplified version of :print
+   :step                       single-step after stopping at a breakpoint
+   :step <expr>                single-step into <expr>
+   :steplocal                  single-step within the current top-level binding
+   :stepmodule                 single-step restricted to the current module
+   :trace                      trace after stopping at a breakpoint
+   :trace <expr>               evaluate <expr> with tracing on (see :history)
+
+ -- Commands for changing settings:
+
+   :set <option> ...           set options
+   :seti <option> ...          set options for interactive evaluation only
+   :set local-config { source | ignore }
+                               set whether to source .ghci in current dir
+                               (loading untrusted config is a security issue)
+   :set args <arg> ...         set the arguments returned by System.Environment.getArgs
+   :set prog <progname>        set the value returned by System.Environment.getProgName
+   :set prompt <prompt>        set the prompt used in GHCi
+   :set prompt-cont <prompt>   set the continuation prompt used in GHCi
+   :set prompt-function <expr> set the function to handle the prompt
+   :set prompt-cont-function <expr>
+                               set the function to handle the continuation prompt
+   :set editor <cmd>           set the command used for :edit
+   :set stop [<n>] <cmd>       set the command to run when a breakpoint is hit
+   :unset <option> ...         unset options
+
+  Options for ':set' and ':unset':
+
+    +m            allow multiline commands
+    +r            revert top-level expressions after each evaluation
+    +s            print timing/memory stats after each evaluation
+    +t            print type after evaluation
+    +c            collect type/location info after loading modules
+    -<flags>      most GHC command line flags can also be set here
+                         (eg. -v2, -XFlexibleInstances, etc.)
+                    for GHCi-specific flags, see User's Guide,
+                    Flag reference, Interactive-mode options
+
+ -- Commands for displaying information:
+
+   :show bindings              show the current bindings made at the prompt
+   :show breaks                show the active breakpoints
+   :show context               show the breakpoint context
+   :show imports               show the current imports
+   :show linker                show current linker state
+   :show modules               show the currently loaded modules
+   :show packages              show the currently active package flags
+   :show paths                 show the currently active search paths
+   :show language              show the currently active language flags
+   :show targets               show the current set of targets
+   :show <setting>             show value of <setting>, which is one of
+                                  [args, prog, editor, stop]
+   :showi language             show language flags for interactive evaluation
+
+ The User's Guide has more information. An online copy can be found here:
+
+   https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
+
+ghci> :q
+Leaving GHCi.
+comshiro@Ubuntu24:~$ ghci
+GHCi, version 9.4.7: https://www.haskell.org/ghc/  :? for help
+ghci> 2
+2
+ghci> 2+3
+5
+ghci> 2 + 3 * 5
+17
+ghci> (2 + 3) * 5
+25
+ghci> 3 / 5
+0.6
+ghci> 45345345346536 * 54425523454534333
+2467944156711854340070394620488
+ghci> 
+ghci> 3 / 0
+Infinity
+ghci> True
+True
+ghci> true
+
+<interactive>:10:1: error:
+    Variable not in scope: true
+    Suggested fix:
+      Perhaps use data constructor ‘True’ (imported from Prelude)
+ghci> False
+False
+ghci> True && False
+False
+ghci> True || False
+True
+ghci> not True
+False
+ghci> 2 <= 3
+True
+ghci> not (2 <= 3)
+False
+ghci> (2 <= 3) || True
+True
+ghci> "aaa" == "aba"
+False
+ghci> "aba" == "aba"
+True
+ghci> "aaa" ++ "aba"
+"aaaaba"
+ghci> + 2 3
+
+<interactive>:21:1: error: parse error on input ‘+’
+ghci> (+) 2 3
+5
+ghci> (*) (+) 2 3 5
+
+<interactive>:23:1: error:
+    • No instance for (Num (Integer -> Integer -> Integer))
+        arising from a use of ‘it’
+        (maybe you haven't applied a function to enough arguments?)
+    • In the first argument of ‘print’, namely ‘it’
+      In a stmt of an interactive GHCi command: print it
+ghci> (*)((+) 2 3) 5
+25
+ghci> (/) 3 5
+0.6
+ghci> (*)  45345345346536 54425523454534333
+2467944156711854340070394620488
+ghci> (/) 3 0
+Infinity
+ghci> (&&) True False
+False
+ghci> (||) True False
+True
+ghci> (<=) 2 3
+True
+ghci> not (<=) 2 3
+
+<interactive>:31:1: error:
+    • Couldn't match expected type ‘t0 -> t1 -> t’
+                  with actual type ‘Bool’
+    • The function ‘not’ is applied to three value arguments,
+        but its type ‘Bool -> Bool’ has only one
+      In the expression: not (<=) 2 3
+      In an equation for ‘it’: it = not (<=) 2 3
+    • Relevant bindings include it :: t (bound at <interactive>:31:1)
+
+<interactive>:31:5: error:
+    • Couldn't match expected type ‘Bool’
+                  with actual type ‘a0 -> a0 -> Bool’
+    • Probable cause: ‘(<=)’ is applied to too few arguments
+      In the first argument of ‘not’, namely ‘(<=)’
+      In the expression: not (<=) 2 3
+      In an equation for ‘it’: it = not (<=) 2 3
+ghci> not ( (<=) 2 3)
+False
+ghci> (||)((<=) 2 3) True
+True
+ghci> (==) "aaa""aba"
+False
+ghci> (==) "aba""aba"
+True
+ghci> (++) "aaa" ++ "aba"
+
+<interactive>:36:1: error:
+    • Couldn't match expected type: [Char]
+                  with actual type: [Char] -> [Char]
+    • Probable cause: ‘(++)’ is applied to too few arguments
+      In the first argument of ‘(++)’, namely ‘(++) "aaa"’
+      In the expression: (++) "aaa" ++ "aba"
+      In an equation for ‘it’: it = (++) "aaa" ++ "aba"
+ghci> (++) "aaa""aba"
+"aaaaba"
+ghci> clear
+
+<interactive>:38:1: error: Variable not in scope: clear
+ghci> :t
+
+<no location info>: error: not an expression: ‘’
+ghci> :t TRue
+
+<interactive>:1:1: error:
+    Data constructor not in scope: TRue
+    Suggested fix: Perhaps use ‘True’ (imported from Prelude)
+ghci> :t True
+True :: Bool
+ghci> :t not
+not :: Bool -> Bool
+ghci> :t True
+True :: Bool
+ghci> :t False
+False :: Bool
+ghci> :t True && False
+True && False :: Bool
+ghci> :t True && (2<= 4)
+True && (2<= 4) :: Bool
+ghci> :t "aaa"
+"aaa" :: String
+ghci> :t 2
+2 :: Num a => a
+ghci> :t 2+3
+2+3 :: Num a => a
+ghci> :t (+)
+(+) :: Num a => a -> a -> a
+ghci> not 3
+
+<interactive>:51:5: error:
+    • No instance for (Num Bool) arising from the literal ‘3’
+    • In the first argument of ‘not’, namely ‘3’
+      In the expression: not 3
+      In an equation for ‘it’: it = not 3
+ghci> :t not 2
+
+<interactive>:1:5: error:
+    • No instance for (Num Bool) arising from the literal ‘2’
+    • In the first argument of ‘not’, namely ‘2’
+      In the expression: not 2
+ghci> :t not
+not :: Bool -> Bool
+ghci> :t 2
+2 :: Num a => a
+ghci> :t 2+3
+2+3 :: Num a => a
+ghci> :t (+)
+(+) :: Num a => a -> a -> a
+ghci> not 3
+
+<interactive>:51:5: error:
+    • No instance for (Num Bool) arising from the literal ‘3’
+    • In the first argument of ‘not’, namely ‘3’
+      In the expression: not 3
+      In an equation for ‘it’: it = not 3
+ghci> :t not 2
+
+<interactive>:1:5: error:
+    • No instance for (Num Bool) arising from the literal ‘2’
+    • In the first argument of ‘not’, namely ‘2’
+      In the expression: not 2
+ghci> :t not
+not :: Bool -> Bool
+ghci> :t 2
+2 :: Num a => a
+ghci> 
+ghci> :t succ
+succ :: Enum a => a -> a
+ghci> :t pred
+pred :: Enum a => a -> a
+ghci> :t max
+max :: Ord a => a -> a -> a
+ghci> :t min
+min :: Ord a => a -> a -> a
+ghci> succ 4
+5
+ghci> succ -4
+
+<interactive>:60:1: error:
+    • No instance for (Show (a0 -> a0)) arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+ghci> pred 3
+2
+ghci> pred 0
+-1
+ghci> max 3 9
+9
+ghci> min 3 0
+0
+ghci> min -45 8
+
+<interactive>:65:1: error:
+    • Could not deduce (Num t0)
+      from the context: (Ord a, Num t, Num (t -> a -> a -> a),
+                         Num (a -> a -> a))
+        bound by the inferred type for ‘it’:
+                   forall {a} {t}.
+                   (Ord a, Num t, Num (t -> a -> a -> a), Num (a -> a -> a)) =>
+                   a -> a -> a
+        at <interactive>:65:1-9
+      The type variable ‘t0’ is ambiguous
+      Potentially matching instances:
+        instance Num Integer -- Defined in ‘GHC.Num’
+        instance Num Double -- Defined in ‘GHC.Float’
+        ...plus three others
+        ...plus two instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    • In the ambiguity check for the inferred type for ‘it’
+      To defer the ambiguity check to use sites, enable AllowAmbiguousTypes
+      When checking the inferred type
+        it :: forall {a} {t}.
+              (Ord a, Num t, Num (t -> a -> a -> a), Num (a -> a -> a)) =>
+              a -> a -> a
+ghci> id x = x
+ghci> id 4
+4
+ghci> sumThree x y z = x + y + z
+ghci> sumThree 7 8 2
+17
+ghci> :q
+Leaving GHCi.
+comshiro@Ubuntu24:~/PF$ cd week1
+comshiro@Ubuntu24:~/PF/week1$ ghci functii.hs
+GHCi, version 9.4.7: https://www.haskell.org/ghc/  :? for help
+[1 of 2] Compiling Main             ( functii.hs, interpreted )
+Ok, one module loaded.
+ghci> :r
+Ok, one module loaded.
+ghci> id 6
+
+<interactive>:4:1: error:
+    Ambiguous occurrence ‘id’
+    It could refer to
+       either ‘Prelude.id’,
+              imported from ‘Prelude’ at functii.hs:1:1
+              (and originally defined in ‘GHC.Base’)
+           or ‘Main.id’, defined at functii.hs:2:1
+ghci> Main.id 5
+5
+ghci> sumThree 6 9 2
+17
+ghci> :t sumThree
+sumThree :: Int -> Int -> Int -> Int
+ghci> sumThree 3.2 2 4
+
+<interactive>:9:10: error:
+    • No instance for (Fractional Int) arising from the literal ‘3.2’
+    • In the first argument of ‘sumThree’, namely ‘3.2’
+      In the expression: sumThree 3.2 2 4
+      In an equation for ‘it’: it = sumThree 3.2 2 4
+ghci> 
+ghci> sumThree 3.2 2 4
+
+<interactive>:11:10: error:
+    • No instance for (Fractional Int) arising from the literal ‘3.2’
+    • In the first argument of ‘sumThree’, namely ‘3.2’
+      In the expression: sumThree 3.2 2 4
+      In an equation for ‘it’: it = sumThree 3.2 2 4
+ghci> :r
+[1 of 2] Compiling Main             ( functii.hs, interpreted ) [Source file changed]
+
+functii.hs:8:1: error:
+    Multiple declarations of ‘sumThree’
+    Declared at: functii.hs:5:1
+                 functii.hs:8:1
+  |
+8 | sumThree x y z = x * y * z
+  | ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( functii.hs, interpreted )
+Ok, one module loaded.
+ghci> :t myMax
+myMax :: Int -> Int -> Int
+ghci> myMax 3 9
+9
+ghci> :r
+[1 of 2] Compiling Main             ( functii.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> max3 1 9 12
+12
+ghci> max3 0 -2 9
+
+<interactive>:18:8: error:
+    • No instance for (Num (Int -> Int -> Int))
+        arising from a use of ‘-’
+        (maybe you haven't applied a function to enough arguments?)
+    • In the expression: max3 0 - 2 9
+      In an equation for ‘it’: it = max3 0 - 2 9
+
+<interactive>:18:9: error:
+    • No instance for (Num (Integer -> Int -> Int -> Int))
+        arising from the literal ‘2’
+        (maybe you haven't applied a function to enough arguments?)
+    • In the second argument of ‘(-)’, namely ‘2 9’
+      In the expression: max3 0 - 2 9
+      In an equation for ‘it’: it = max3 0 - 2 9
+ghci> max3 0 4 19
+19
+ghci> mySum -4
+
+<interactive>:20:7: error:
+    • No instance for (Num (Int -> Int)) arising from a use of ‘-’
+        (maybe you haven't applied a function to enough arguments?)
+    • In the expression: mySum - 4
+      In an equation for ‘it’: it = mySum - 4
+ghci> mySum 2
+3
+ghci> mySum 0
+0
+ghci> mySum -1
+
+<interactive>:23:7: error:
+    • No instance for (Num (Int -> Int)) arising from a use of ‘-’
+        (maybe you haven't applied a function to enough arguments?)
+    • In the expression: mySum - 1
+      In an equation for ‘it’: it = mySum - 1
+ghci> mySum (-1)
+0
+ghci> fib 5
+5
+ghci> gib 1
+
+<interactive>:26:1: error:
+    Variable not in scope: gib :: t0 -> t
+    Suggested fix: Perhaps use ‘fib’ (line 23)
+ghci> fib 1
+1
+ghci> fib 2
+1
+ghci> fib 3
+2
+ghci> fib 4
+3
+ghci> fib 6
+8
+ghci> cmmdc 12 24
+12
+ghci> cmmdc 144 12
+12
+ghci> 
+
+
+
+
