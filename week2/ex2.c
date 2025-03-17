@@ -14,4 +14,9 @@ int f( int x, int y) {
 int main()
 {
     printf("%d\n", f(g(), g()));
+}while(m != 0)
+{
+    int r = n % m;
+    n = m;
+    m = r;
 }

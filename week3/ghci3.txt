@@ -1,0 +1,368 @@
+comshiro@Ubuntu24:~/PF/week2$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :q
+Leaving GHCi.
+comshiro@Ubuntu24:~/PF/week2$ cd ..
+comshiro@Ubuntu24:~/PF$ cd week3
+comshiro@Ubuntu24:~/PF/week3$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load lab3.hs
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+Ok, one module loaded.
+ghci> :t Smartphone
+Smartphone :: MobileDevice
+ghci> :t Laptop
+Laptop :: MobileDevice
+ghci> :t True
+True :: Bool
+ghci> True
+True
+ghci> Tablet
+
+<interactive>:6:1: error:
+    • No instance for (Show MobileDevice) arising from a use of ‘print’
+    • In a stmt of an interactive GHCi command: print it
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> Tablet
+Tablet
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> :t (Tablet 12)
+(Tablet 12) :: MobileDevice
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> :t (Tablet 12 "Lenovo")
+(Tablet 12 "Lenovo") :: MobileDevice
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+
+lab3.hs:10:30: error:
+    • No instance for (Show Culori)
+        arising from the third field of ‘Tablet’ (type ‘Culori’)
+      Possible fix:
+        use a standalone 'deriving instance' declaration,
+          so you can specify the instance context yourself
+    • When deriving the instance for (Show MobileDevice)
+   |
+10 |                     deriving(Show)
+   |                              ^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+Ok, one module loaded.
+ghci> :t (Laptop Galben)
+(Laptop Galben) :: MobileDevice
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+
+lab3.hs:14:11: error:
+    • The constructor ‘Laptop’ should have 1 argument, but has been given none
+    • In the pattern: Laptop
+      In an equation for ‘descriere’:
+          descriere Laptop = "Acesta este un laptop de culoare roz."
+   |
+14 | descriere Laptop = "Acesta este un laptop de culoare roz."
+   |           ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+
+lab3.hs:14:19: error: Not in scope: data constructor ‘Culori’
+   |
+14 | descriere (Laptop Culori) = "Acesta este un laptop de culoare roz."
+   |                   ^^^^^^
+
+lab3.hs:15:19: error: Not in scope: data constructor ‘Int’
+   |
+15 | descriere (Tablet Int String Culori) = "Aceasta este o tableta mov."
+   |                   ^^^
+
+lab3.hs:15:23: error: Not in scope: data constructor ‘String’
+   |
+15 | descriere (Tablet Int String Culori) = "Aceasta este o tableta mov."
+   |                       ^^^^^^
+
+lab3.hs:15:30: error: Not in scope: data constructor ‘Culori’
+   |
+15 | descriere (Tablet Int String Culori) = "Aceasta este o tableta mov."
+   |                              ^^^^^^
+
+lab3.hs:16:23: error: Not in scope: data constructor ‘Culori’
+   |
+16 | descriere (Smartphone Culori)= "Acesta este un telefon mobil."
+   |                       ^^^^^^
+Failed, no modules loaded.
+ghci> 
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+Ok, one module loaded.
+ghci> descriere (Laptop Violet)
+"Acesta este un laptop de culoare roz."
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+
+lab3.hs:19:1: error:
+    equations for ‘getColor’ have different numbers of arguments
+      lab3.hs:19:1-16
+      lab3.hs:20:1-25
+   |
+19 | getColor _ c = c
+   | ^^^^^^^^^^^^^^^^...
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+
+lab3.hs:20:10: error:
+    Not in scope: data constructor ‘Smarthphone’
+    Suggested fix: Perhaps use ‘Smartphone’ (line 8)
+   |
+20 | getColor Smarthphone c = c
+   |          ^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+
+lab3.hs:19:1: error:
+    equations for ‘getColor’ have different numbers of arguments
+      lab3.hs:19:1-21
+      lab3.hs:21:1-25
+   |
+19 | getColor Laptop c = c
+   | ^^^^^^^^^^^^^^^^^^^^^...
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+Ok, one module loaded.
+ghci> getColor (Tableta 12 "Apple" Verde)
+
+<interactive>:24:11: error:
+    Data constructor not in scope:
+      Tableta :: t0 -> String -> Culori -> MobileDevice
+    Suggested fix: Perhaps use ‘Tablet’ (line 10)
+ghci> getColor (Tablet 12 "Apple" Verde)
+Verde
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> minBST (Nod 2 (Nod 6 (Nod 9 Frunza Frunza) Frunza) Frunza) 
+9
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> maxBST (Nod 2 (Nod 6 (Nod 9 Frunza Frunza) Frunza) Frunza) 
+2
+ghci> minBST Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 7 Frunza Frunza)) (Nod 15 Frunza Frunza)
+
+<interactive>:30:1: error:
+    • Couldn't match expected type ‘t0 -> Arb -> Arb -> t’
+                  with actual type ‘Integer’
+    • The function ‘minBST’ is applied to four value arguments,
+        but its type ‘Arb -> Integer’ has only one
+      In the expression:
+        minBST
+          Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 7 Frunza Frunza))
+          (Nod 15 Frunza Frunza)
+      In an equation for ‘it’:
+          it
+            = minBST
+                Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 7 Frunza Frunza))
+                (Nod 15 Frunza Frunza)
+    • Relevant bindings include it :: t (bound at <interactive>:30:1)
+
+<interactive>:30:8: error:
+    • Couldn't match expected type ‘Arb’
+                  with actual type ‘Integer -> Arb -> Arb -> Arb’
+    • Probable cause: ‘Nod’ is applied to too few arguments
+      In the first argument of ‘minBST’, namely ‘Nod’
+      In the expression:
+        minBST
+          Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 7 Frunza Frunza))
+          (Nod 15 Frunza Frunza)
+      In an equation for ‘it’:
+          it
+            = minBST
+                Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 7 Frunza Frunza))
+                (Nod 15 Frunza Frunza)
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> 
+ghci> isBST (Nod 2 (Nod 6 (Nod 9 Frunza Frunza) Frunza) Frunza)
+False
+ghci> isBST (Nod 6 (Nod 2 (Nod 3 Frunza Frunza) Frunza) Frunza)
+*** Exception: lab3.hs:(27,1)-(28,54): Non-exhaustive patterns in function minBST
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+
+lab3.hs:39:8: error:
+    Not in scope: data constructor ‘NOd’
+    Suggested fix: Perhaps use ‘Nod’ (line 23)
+   |
+39 | isBST (NOd i j k) = ((maxBST j) < i) && ((minBST k) > i) && (isBST j) && (isBST k)
+   |        ^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+Ok, one module loaded.
+ghci> isBST Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza)
+
+<interactive>:36:1: error:
+    • Couldn't match expected type ‘t0 -> Arb -> Arb -> t’
+                  with actual type ‘Bool’
+    • The function ‘isBST’ is applied to four value arguments,
+        but its type ‘Arb -> Bool’ has only one
+      In the expression:
+        isBST
+          Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza))
+          (Nod 15 Frunza Frunza)
+      In an equation for ‘it’:
+          it
+            = isBST
+                Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza))
+                (Nod 15 Frunza Frunza)
+    • Relevant bindings include it :: t (bound at <interactive>:36:1)
+
+<interactive>:36:7: error:
+    • Couldn't match expected type ‘Arb’
+                  with actual type ‘Integer -> Arb -> Arb -> Arb’
+    • Probable cause: ‘Nod’ is applied to too few arguments
+      In the first argument of ‘isBST’, namely ‘Nod’
+      In the expression:
+        isBST
+          Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza))
+          (Nod 15 Frunza Frunza)
+      In an equation for ‘it’:
+          it
+            = isBST
+                Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza))
+                (Nod 15 Frunza Frunza)
+ghci> 
+ghci> isBST (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza))
+*** Exception: lab3.hs:(31,1)-(32,54): Non-exhaustive patterns in function maxBST
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> isBST (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza))
+*** Exception: lab3.hs:(31,1)-(32,54): Non-exhaustive patterns in function maxBST
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+
+lab3.hs:42:13: error:
+    • Conflicting definitions for ‘i’
+      Bound at: lab3.hs:42:13
+                lab3.hs:42:20
+    • In an equation for ‘search’
+   |
+42 | search (Nod i j k) i = True 
+   |             ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+Ok, one module loaded.
+ghci> search (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza)) 12
+*** Exception: lab3.hs:(42,1)-(43,57): Non-exhaustive patterns in function search
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> search (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza)) 12
+False
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> search (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza)) 12
+True
+ghci> search (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza)) 1
+False
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> insert (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza)) 6
+Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 (Nod 6 Frunza Frunza) Frunza)) (Nod 15 Frunza Frunza)
+ghci> insert (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza)) 9
+Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 (Nod 9 Frunza Frunza) Frunza)) (Nod 15 Frunza Frunza)
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+
+lab3.hs:55:1: error:
+    Parse error: module header, import declaration
+    or top-level declaration expected.
+   |
+55 | removeMax (Nod i j k) (Nod i j (remove k))
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+
+lab3.hs:55:1: error:
+    Multiple declarations of ‘removeMax’
+    Declared at: lab3.hs:52:1
+                 lab3.hs:55:1
+   |
+55 | removeMax (Nod i j k) = (Nod i j (remove k))
+   | ^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+
+lab3.hs:54:18: error:
+    • Conflicting definitions for ‘j’
+      Bound at: lab3.hs:54:18
+                lab3.hs:54:25
+    • In an equation for ‘removeMax’
+   |
+54 | removeMax (Nod i j (Nod j Frunza Frunza)) = (Nod i j Frunza)
+   |                  ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+
+lab3.hs:55:35: error: Variable not in scope: remove :: Arb -> Arb
+   |
+55 | removeMax (Nod i j k) = (Nod i j (remove k))
+   |                                   ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+
+lab3.hs:55:35: error: Variable not in scope: remove :: Arb -> Arb
+   |
+55 | removeMax (Nod i j k) = (Nod i j (remove k))
+   |                                   ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted )
+Ok, one module loaded.
+ghci> :r
+Ok, one module loaded.
+ghci> removeMax (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 15 Frunza Frunza))
+Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) Frunza
+ghci> removeMax (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 11 Frunza Frunza))
+Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) Frunza
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> removeMax (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 11 Frunza Frunza))
+Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) Frunza
+ghci> :r
+[1 of 2] Compiling Main             ( lab3.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> remove (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 11 Frunza Frunza)) 10
+Nod *** Exception: lab3.hs:(31,1)-(32,54): Non-exhaustive patterns in function maxBST
+
+ghci> remove (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 11 Frunza Frunza)) 5
+Nod 10 (Nod 2 Frunza (Nod 12 Frunza Frunza)) (Nod 11 Frunza Frunza)
+ghci> preOrder (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 11 Frunza Frunza)) 
+[10,5,2,12,11]
+ghci> inOrder (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 11 Frunza Frunza)) 
+[2,5,12,10,11]
+ghci> postOrder (Nod 10 (Nod 5 (Nod 2 Frunza Frunza) (Nod 12 Frunza Frunza)) (Nod 11 Frunza Frunza)) 
+[2,12,5,11,10]
+ghci> 
