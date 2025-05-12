@@ -1,0 +1,881 @@
+comshiro@Ubuntu24:~/PF$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :t (+)
+(+) :: Num a => a -> a -> a
+ghci> g=(\ x -> x+3)
+ghci> g 10
+13
+ghci> 
+ghci> :q
+Leaving GHCi.
+comshiro@Ubuntu24:~/PF$ cd week5
+comshiro@Ubuntu24:~/PF/week5$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> load curs5.hs
+
+<interactive>:1:1: error:
+    Variable not in scope: load :: t0 -> b0 -> c
+
+<interactive>:1:6: error: Variable not in scope: curs5
+
+<interactive>:1:12: error: Variable not in scope: hs :: a -> b0
+ghci> :load curs5.hs
+[1 of 2] Compiling Main             ( curs5.hs, interpreted )
+
+curs5.hs:4:10: error: parse error on input ‘->’
+  |
+4 | add: Int -> Int -> Int 
+  |          ^^
+Failed, no modules loaded.
+ghci> :load curs5.hs
+[1 of 2] Compiling Main             ( curs5.hs, interpreted )
+Ok, one module loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> mystery g
+
+<interactive>:5:9: error: Variable not in scope: g :: Int -> Int
+ghci> g = (\ x -> x+3)
+ghci> mystery g
+3
+ghci> :r
+[1 of 2] Compiling Main             ( curs5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> g 42
+45
+ghci> g 7
+10
+ghci> :t mystery
+mystery :: (Int -> Int) -> Int
+ghci> :t adder
+adder :: Int -> Int -> Int
+ghci> :r
+[1 of 2] Compiling Main             ( curs5.hs, interpreted ) [Source file changed]
+
+curs5.hs:27:1: error:
+    Multiple declarations of ‘add’
+    Declared at: curs5.hs:6:1
+                 curs5.hs:27:1
+   |
+27 | add 3 x y z= x+y+z 
+   | ^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs5.hs, interpreted )
+
+curs5.hs:32:1: error:
+    The type signature for ‘curry'’ lacks an accompanying binding
+    Suggested fix: Perhaps use ‘cuury'’ (Defined at curs5.hs:33:1)
+   |
+32 | curry' :: ((Int, Int) -> Int) -> (Int ->Int -> Int)
+   | ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs5.hs, interpreted )
+
+curs5.hs:32:1: error:
+    The type signature for ‘curry'’ lacks an accompanying binding
+    Suggested fix: Perhaps use ‘cury'’ (Defined at curs5.hs:33:1)
+   |
+32 | curry' :: ((Int, Int) -> Int) -> (Int ->Int -> Int)
+   | ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( curs5.hs, interpreted )
+Ok, one module loaded.
+ghci> (uncurry' (curry' add2)) (2,3)
+
+<interactive>:17:2: error:
+    Variable not in scope:
+      uncurry' :: (Int -> Int -> Int) -> (a0, b0) -> t
+    Suggested fix:
+      Perhaps use one of these:
+        ‘uncurry’ (imported from Prelude), ‘curry'’ (line 33)
+ghci> :r
+[1 of 2] Compiling Main             ( curs5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> mystery (+5) (*2) 10
+
+<interactive>:19:1: error:
+    • Couldn't match expected type ‘(a0 -> a0) -> t0 -> t’
+                  with actual type ‘Int’
+    • The function ‘mystery’ is applied to three value arguments,
+        but its type ‘(Int -> Int) -> Int’ has only one
+      In the expression: mystery (+ 5) (* 2) 10
+      In an equation for ‘it’: it = mystery (+ 5) (* 2) 10
+    • Relevant bindings include it :: t (bound at <interactive>:19:1)
+ghci> load lab5.hs
+
+<interactive>:20:1: error:
+    Variable not in scope: load :: t0 -> b0 -> c
+
+<interactive>:20:6: error: Variable not in scope: lab5
+
+<interactive>:20:11: error: Variable not in scope: hs :: a -> b0
+ghci> :q
+Leaving GHCi.
+comshiro@Ubuntu24:~/PF/week5$ ls
+curs5.hs  curs5_prof  ghci.txt  lab5.hs
+comshiro@Ubuntu24:~/PF/week5$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load lab5.hs
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> :t (g 2)
+(g 2) :: Int -> Int
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:14:1: error:
+    Multiple declarations of ‘addThree’
+    Declared at: lab5.hs:11:1
+                 lab5.hs:14:1
+   |
+14 | addThree a = \ b -> (\c -> a + b +c ) 
+   | ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> addThree 1 2 3
+
+<interactive>:5:1: error:
+    • Couldn't match expected type ‘t0 -> t1 -> t’
+                  with actual type ‘Int’
+    • The function ‘addThree’ is applied to three value arguments,
+        but its type ‘(Int, Int, Int) -> Int’ has only one
+      In the expression: addThree 1 2 3
+      In an equation for ‘it’: it = addThree 1 2 3
+    • Relevant bindings include it :: t (bound at <interactive>:5:1)
+ghci> addThree (1,2,3)
+6
+ghci> addThree_curried  1 2 3
+6
+ghci> :r
+Ok, one module loaded.
+ghci> process (+ 2) 4
+
+<interactive>:9:1: error:
+    Variable not in scope: process :: (a0 -> a0) -> t0 -> t
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> process (+ 2) 4
+6
+ghci> (((addThree 1) 2) 3)
+
+<interactive>:12:2: error:
+    • Couldn't match expected type ‘t0 -> t1 -> t’
+                  with actual type ‘Int’
+    • The function ‘addThree’ is applied to three value arguments,
+        but its type ‘(Int, Int, Int) -> Int’ has only one
+      In the expression: ((addThree 1) 2) 3
+      In an equation for ‘it’: it = (((addThree 1) 2) 3)
+    • Relevant bindings include it :: t (bound at <interactive>:12:1)
+ghci> (((addThree_curried 1) 2) 3)
+6
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:20:9: error:
+    • Conflicting definitions for ‘b’
+      Bound at: lab5.hs:20:9
+                lab5.hs:20:11
+    • In an equation for ‘ex2_1’
+   |
+20 | ex2_1 f b b = 0 
+   |         ^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:20:40: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Int -> Int’
+    • Probable cause: ‘ex2_1’ is applied to too few arguments
+      In the first argument of ‘(+)’, namely ‘ex2_1 f a’
+      In the second argument of ‘(+)’, namely ‘(ex2_1 f a + 1 b)’
+      In the expression: f (a + 1) + (ex2_1 f a + 1 b)
+   |
+20 | ex2_1 f a b = if a < b then f (a+1) + (ex2_1 f a+1 b)  
+   |                                        ^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> ex2_1 (\x -> x-1) 2 7
+20
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> ex2_1 (\x -> x-1) 2 7
+20
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> ex2_1 (\x -> x-1) 2 7
+15
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> ex2_1 (\x -> x-1) 2 7
+20
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> :t compf
+compf :: (t1 -> t2) -> (t3 -> t1) -> t3 -> t2
+ghci> 
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:28:38: error:
+    • Couldn't match type ‘a’ with ‘a -> a’
+      Expected: a -> a -> a
+        Actual: a -> a
+      ‘a’ is a rigid type variable bound by
+        the type signature for:
+          compf_list :: forall a. [a -> a] -> a -> a
+        at lab5.hs:27:1-33
+    • In the third argument of ‘foldr’, namely ‘(compf_list tl)’
+      In the expression: foldr (.) hd (compf_list tl)
+      In an equation for ‘compf_list’:
+          compf_list (hd : tl) = foldr (.) hd (compf_list tl)
+    • Relevant bindings include
+        tl :: [a -> a] (bound at lab5.hs:28:18)
+        hd :: a -> a (bound at lab5.hs:28:13)
+        compf_list :: [a -> a] -> a -> a (bound at lab5.hs:28:1)
+   |
+28 | compf_list (hd : tl) = foldr (.) hd (compf_list tl)
+   |                                      ^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:28:50: error:
+    • Couldn't match expected type: (a -> a) -> a -> a
+                  with actual type: [a -> a]
+    • In the expression: tl
+      In the first argument of ‘compf_list’, namely ‘[tl]’
+      In the third argument of ‘foldr’, namely ‘(compf_list [tl])’
+    • Relevant bindings include
+        tl :: [a -> a] (bound at lab5.hs:28:18)
+        hd :: a -> a (bound at lab5.hs:28:13)
+        compf_list :: [a -> a] -> a -> a (bound at lab5.hs:28:1)
+   |
+28 | compf_list (hd : tl) = foldr (.) hd (compf_list [tl])
+   |                                                  ^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:28:38: error:
+    • Couldn't match type ‘a’ with ‘a -> a’
+      Expected: a -> a -> a
+        Actual: a -> a
+      ‘a’ is a rigid type variable bound by
+        the type signature for:
+          compf_list :: forall a. [a -> a] -> a -> a
+        at lab5.hs:27:1-35
+    • In the third argument of ‘foldr’, namely ‘(compf_list tl)’
+      In the expression: foldr (.) hd (compf_list tl)
+      In an equation for ‘compf_list’:
+          compf_list (hd : tl) = foldr (.) hd (compf_list tl)
+    • Relevant bindings include
+        tl :: [a -> a] (bound at lab5.hs:28:18)
+        hd :: a -> a (bound at lab5.hs:28:13)
+        compf_list :: [a -> a] -> a -> a (bound at lab5.hs:28:1)
+   |
+28 | compf_list (hd : tl) = foldr (.) hd (compf_list tl)
+   |                                      ^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :t List
+
+<interactive>:1:1: error: Data constructor not in scope: List
+ghci> :t foldr
+foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b
+ghci> :t foldr:r
+
+<interactive>:1:7: error:
+    Variable not in scope: r :: [(a -> b -> b) -> b -> t a -> b]
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:30:1: error:
+    Parse error: module header, import declaration
+    or top-level declaration expected.
+   |
+30 | sum_Lis
+   | ^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> compf_list [(+3), (*5), (-2)]
+
+<interactive>:34:1: error:
+    • No instance for (Show (Integer -> Integer))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+ghci> compf_list [(+3), (*5), (-2)] 10
+
+<interactive>:35:1: error:
+    • No instance for (Num (Integer -> Integer))
+        arising from a use of ‘it’
+        (maybe you haven't applied a function to enough arguments?)
+    • In the first argument of ‘print’, namely ‘it’
+      In a stmt of an interactive GHCi command: print it
+ghci> compf_list [(+3), (*5), (+2)] 10
+*** Exception: lab5.hs:28:1-45: Non-exhaustive patterns in function compf_list
+
+ghci> id 3
+3
+ghci> id ads
+
+<interactive>:38:4: error:
+    Variable not in scope: ads
+    Suggested fix: Perhaps use ‘abs’ (imported from Prelude)
+ghci> id "ads"
+"ads"
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> compf_list [(+3), (*5), (+2)] 10
+63
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:36:1: error:
+    Multiple declarations of ‘sum_list’
+    Declared at: lab5.hs:32:1
+                 lab5.hs:36:1
+   |
+36 | sum_list [] = 0
+   | ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:35:13: error:
+    Not in scope: type constructor or class ‘List’
+   |
+35 | sum_list':: List Int -> Int
+   |             ^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:35:13: error:
+    Not in scope: type constructor or class ‘List’
+   |
+35 | sum_list':: List a -> Int
+   |             ^^^^
+Failed, no modules loaded.
+ghci> :t List
+
+<interactive>:1:1: error: Data constructor not in scope: List
+ghci> :t list
+
+<interactive>:1:1: error:
+    Variable not in scope: list
+    Suggested fix: Perhaps use ‘last’ (imported from Prelude)
+ghci> :t []
+[] :: [a]
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:33:20: error: Variable not in scope: x :: Int
+   |
+33 | sum_list (hd:tl) = x + sum_list tl 
+   |                    ^
+
+lab5.hs:36:28: error:
+    • Couldn't match expected type: [a]
+                  with actual type: (a -> a) -> [a]
+    • Probable cause: ‘apply’ is applied to too few arguments
+      In the second argument of ‘(:)’, namely ‘apply tl’
+      In the expression: f hd : apply tl
+      In an equation for ‘apply’: apply (hd : tl) f = f hd : apply tl
+    • Relevant bindings include
+        f :: a -> a (bound at lab5.hs:36:17)
+        tl :: [a] (bound at lab5.hs:36:13)
+        hd :: a (bound at lab5.hs:36:8)
+        apply :: [a] -> (a -> a) -> [a] (bound at lab5.hs:36:1)
+   |
+36 | apply (hd : tl) f = f hd : apply tl
+   |                            ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:36:31: error:
+    • Couldn't match expected type: [a]
+                  with actual type: (a -> a) -> [a]
+    • Probable cause: ‘apply’ is applied to too few arguments
+      In the second argument of ‘(:)’, namely ‘(apply tl)’
+      In the expression: (f hd) : (apply tl)
+      In an equation for ‘apply’: apply (hd : tl) f = (f hd) : (apply tl)
+    • Relevant bindings include
+        f :: a -> a (bound at lab5.hs:36:17)
+        tl :: [a] (bound at lab5.hs:36:13)
+        hd :: a (bound at lab5.hs:36:8)
+        apply :: [a] -> (a -> a) -> [a] (bound at lab5.hs:36:1)
+   |
+36 | apply (hd : tl) f = (f hd) : (apply tl)
+   |                               ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> apply [3, 6, 1] (+1)
+[4,7,2*** Exception: lab5.hs:36:1-41: Non-exhaustive patterns in function apply
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:36:1: error:
+    equations for ‘apply’ have different numbers of arguments
+      lab5.hs:36:1-13
+      lab5.hs:37:1-41
+   |
+36 | apply [] = []
+   | ^^^^^^^^^^^^^...
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> apply [3, 6, 1] (+1)
+[4,7,2]
+ghci> :t filter
+filter :: (a -> Bool) -> [a] -> [a]
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> check_true [0, 5, 8, 3] (\ x -> x>=5)
+[5,8]
+ghci> :t foldr
+foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:43:34: error:
+    • Expected kind ‘* -> *’, but ‘List’ has kind ‘*’
+    • In the type signature:
+        foldl' :: (a -> b -> b) -> b -> List a -> b
+   |
+43 | foldl' ::  (a -> b -> b) -> b -> List a -> b
+   |                                  ^^^^^^
+Failed, no modules loaded.
+ghci> :t fold
+
+<interactive>:1:1: error:
+    Variable not in scope: fold
+    Suggested fix:
+      Perhaps use one of these:
+        ‘foldl’ (imported from Prelude), ‘foldr’ (imported from Prelude)
+ghci> :t foldl
+foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:45:40: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘b’
+      ‘b’ is a rigid type variable bound by
+        the type signature for:
+          foldl' :: forall b. (Int -> b) -> b -> List -> b
+        at lab5.hs:43:1-38
+    • In the first argument of ‘f’, namely ‘x’
+      In the second argument of ‘foldl'’, namely ‘(f x hd)’
+      In the expression: foldl' f (f x hd) tl
+    • Relevant bindings include
+        x :: b (bound at lab5.hs:45:10)
+        f :: Int -> b (bound at lab5.hs:45:8)
+        foldl' :: (Int -> b) -> b -> List -> b (bound at lab5.hs:45:1)
+   |
+45 | foldl' f x (Cons hd tl) = foldl'  f (f x hd) tl
+   |                                        ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:45:38: error:
+    • Couldn't match expected type ‘Int -> Int’ with actual type ‘Int’
+    • The function ‘f’ is applied to two value arguments,
+        but its type ‘Int -> Int’ has only one
+      In the second argument of ‘foldl'’, namely ‘(f x hd)’
+      In the expression: foldl' f (f x hd) tl
+   |
+45 | foldl' f x (Cons hd tl) = foldl'  f (f x hd) tl
+   |                                      ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> foldl' (/) 64 [4,2,4]
+
+<interactive>:65:15: error:
+    • Couldn't match expected type ‘List’ with actual type ‘[a0]’
+    • In the third argument of ‘foldl'’, namely ‘[4, 2, 4]’
+      In the expression: foldl' (/) 64 [4, 2, 4]
+      In an equation for ‘it’: it = foldl' (/) 64 [4, 2, 4]
+ghci> foldl' (/) 64 (Cons 4 (Cons 2 4))
+
+<interactive>:66:8: error:
+    • No instance for (Fractional Int) arising from a use of ‘/’
+    • In the first argument of ‘foldl'’, namely ‘(/)’
+      In the expression: foldl' (/) 64 (Cons 4 (Cons 2 4))
+      In an equation for ‘it’: it = foldl' (/) 64 (Cons 4 (Cons 2 4))
+
+<interactive>:66:31: error:
+    • No instance for (Num List) arising from the literal ‘4’
+    • In the second argument of ‘Cons’, namely ‘4’
+      In the second argument of ‘Cons’, namely ‘(Cons 2 4)’
+      In the third argument of ‘foldl'’, namely ‘(Cons 4 (Cons 2 4))’
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> foldl' (/) 64 (Cons 4 (Cons 2 (Cons 4 Empty)))
+
+<interactive>:68:8: error:
+    • No instance for (Fractional Int) arising from a use of ‘/’
+    • In the first argument of ‘foldl'’, namely ‘(/)’
+      In the expression: foldl' (/) 64 (Cons 4 (Cons 2 (Cons 4 Empty)))
+      In an equation for ‘it’:
+          it = foldl' (/) 64 (Cons 4 (Cons 2 (Cons 4 Empty)))
+ghci> foldl' (+1) 64 (Cons 4 (Cons 2 (Cons 4 Empty)))
+
+<interactive>:69:9: error:
+    • Couldn't match type ‘Int’ with ‘Int -> Int’
+      Expected: Int -> Int -> Int
+        Actual: Int -> Int
+    • In the first argument of ‘foldl'’, namely ‘(+ 1)’
+      In the expression: foldl' (+ 1) 64 (Cons 4 (Cons 2 (Cons 4 Empty)))
+      In an equation for ‘it’:
+          it = foldl' (+ 1) 64 (Cons 4 (Cons 2 (Cons 4 Empty)))
+ghci> foldl' (+1) 64  (Cons 2 (Cons 4 Empty))
+
+<interactive>:70:9: error:
+    • Couldn't match type ‘Int’ with ‘Int -> Int’
+      Expected: Int -> Int -> Int
+        Actual: Int -> Int
+    • In the first argument of ‘foldl'’, namely ‘(+ 1)’
+      In the expression: foldl' (+ 1) 64 (Cons 2 (Cons 4 Empty))
+      In an equation for ‘it’:
+          it = foldl' (+ 1) 64 (Cons 2 (Cons 4 Empty))
+ghci> foldl' (+1) 64 (Cons 4 Empty)
+
+<interactive>:71:9: error:
+    • Couldn't match type ‘Int’ with ‘Int -> Int’
+      Expected: Int -> Int -> Int
+        Actual: Int -> Int
+    • In the first argument of ‘foldl'’, namely ‘(+ 1)’
+      In the expression: foldl' (+ 1) 64 (Cons 4 Empty)
+      In an equation for ‘it’: it = foldl' (+ 1) 64 (Cons 4 Empty)
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:46:38: error:
+    • Couldn't match expected type ‘Int -> Int’ with actual type ‘Int’
+    • The function ‘f’ is applied to two value arguments,
+        but its type ‘Int -> Int’ has only one
+      In the second argument of ‘foldl'’, namely ‘(f x hd)’
+      In the expression: foldl' f (f x hd) tl
+   |
+46 | foldl' f x (Cons hd tl) = foldl'  f (f x hd) tl
+   |                                      ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:46:38: error:
+    • Couldn't match expected type ‘Int -> Int’ with actual type ‘Int’
+    • The function ‘f’ is applied to two value arguments,
+        but its type ‘Int -> Int’ has only one
+      In the second argument of ‘foldl'’, namely ‘(f x hd)’
+      In the expression: foldl' f (f x hd) tl
+   |
+46 | foldl' f x (Cons hd tl) = foldl'  f (f x hd) tl
+   |                                      ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> foldl' (+1) 64 (Cons 4 Empty)
+
+<interactive>:75:9: error:
+    • Couldn't match type ‘Int’ with ‘Int -> Int’
+      Expected: Int -> Int -> Int
+        Actual: Int -> Int
+    • In the first argument of ‘foldl'’, namely ‘(+ 1)’
+      In the expression: foldl' (+ 1) 64 (Cons 4 Empty)
+      In an equation for ‘it’: it = foldl' (+ 1) 64 (Cons 4 Empty)
+ghci> foldl' (+) 64 (Cons 4 Empty)
+*** Exception: lab5.hs:46:1-46: Non-exhaustive patterns in function foldl'
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> foldl' (+) 64 (Cons 4 Empty)
+*** Exception: lab5.hs:46:1-46: Non-exhaustive patterns in function foldl'
+
+ghci> foldl' (-) 64 (Cons 4 Empty)
+*** Exception: lab5.hs:46:1-46: Non-exhaustive patterns in function foldl'
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:53:1: error:
+    The type signature for ‘preOrder’ lacks an accompanying binding
+   |
+53 | preOrder:: Arb -> f -> [Int]
+   | ^^^^^^^^
+
+lab5.hs:54:1: error:
+    The type signature for ‘inOrder’ lacks an accompanying binding
+   |
+54 | inOrder:: Arb -> f -> [Int]
+   | ^^^^^^^
+
+lab5.hs:55:1: error:
+    The type signature for ‘postOrder’ lacks an accompanying binding
+   |
+55 | postOrder:: Arb -> f -> [Int]
+   | ^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> foldl' add 64 (Cons 4 Empty)
+*** Exception: lab5.hs:46:1-46: Non-exhaustive patterns in function foldl'
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:50:31: error: Not in scope: type constructor or class ‘>’
+   |
+50 | preOrder:: Arb -> (Int -> Int)> [Int]
+   |                               ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:51:29: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘Integer’
+    • In the first argument of ‘f’, namely ‘i’
+      In the expression: f i
+      In the first argument of ‘(++)’, namely ‘[f i]’
+   |
+51 | preOrder (Nod i j k) f = [f i] ++ preOrder j f ++ preOrder k f 
+   |                             ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> preOrder (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) (+1) 
+[4,2*** Exception: lab5.hs:51:1-62: Non-exhaustive patterns in function preOrder
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> preOrder (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) (+1) 
+[4,2,8]
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> foldl' add 64 (Cons 4 Empty)
+
+<interactive>:90:8: error:
+    Variable not in scope: add :: Int -> Int -> Int
+    Suggested fix:
+      Perhaps use one of these:
+        ‘and’ (imported from Prelude), ‘odd’ (imported from Prelude)
+ghci> foldl' (+) 64 (Cons 4 Empty)
+*** Exception: lab5.hs:46:1-46: Non-exhaustive patterns in function foldl'
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> foldl' (+) 64 (Cons 4 Empty)
+0
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> foldl' (+) 64 (Cons 4 Empty)
+68
+ghci> preOrder (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) (+1) 
+[4,2,8]
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:54:1: error:
+    Invalid type signature: InOrder :: ...
+    Suggested fix:
+      A type signature should be of form <variables> :: <type>
+   |
+54 | InOrder:: Arb -> (Int -> Int)-> [Int]
+   | ^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:55:23: error:
+    • Couldn't match expected type: (Int -> Int) -> [Int]
+                  with actual type: [Int]
+    • Possible cause: ‘(++)’ is applied to too many arguments
+      In the expression: inOrder j f ++ [f i] ++ inOrder k f
+      In an equation for ‘inOrder’:
+          inOrder (Nod i j k) = inOrder j f ++ [f i] ++ inOrder k f
+   |
+55 | inOrder (Nod i j k) = inOrder j f ++ [f i] ++ inOrder k f
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lab5.hs:55:33: error:
+    • Couldn't match type ‘(Int, Int)’ with ‘Int’
+      Expected: Int -> Int
+        Actual: (Int, Int) -> Int
+    • In the second argument of ‘inOrder’, namely ‘f’
+      In the first argument of ‘(++)’, namely ‘inOrder j f’
+      In the expression: inOrder j f ++ [f i] ++ inOrder k f
+   |
+55 | inOrder (Nod i j k) = inOrder j f ++ [f i] ++ inOrder k f
+   |                                 ^
+
+lab5.hs:55:41: error:
+    • Couldn't match expected type ‘(Int, Int)’ with actual type ‘Int’
+    • In the first argument of ‘f’, namely ‘i’
+      In the expression: f i
+      In the first argument of ‘(++)’, namely ‘[f i]’
+   |
+55 | inOrder (Nod i j k) = inOrder j f ++ [f i] ++ inOrder k f
+   |                                         ^
+
+lab5.hs:55:57: error:
+    • Couldn't match type ‘(Int, Int)’ with ‘Int’
+      Expected: Int -> Int
+        Actual: (Int, Int) -> Int
+    • In the second argument of ‘inOrder’, namely ‘f’
+      In the second argument of ‘(++)’, namely ‘inOrder k f’
+      In the second argument of ‘(++)’, namely ‘[f i] ++ inOrder k f’
+   |
+55 | inOrder (Nod i j k) = inOrder j f ++ [f i] ++ inOrder k f
+   |                                                         ^
+
+lab5.hs:59:25: error:
+    • Couldn't match expected type: (Int -> Int) -> [Int]
+                  with actual type: [Int]
+    • Possible cause: ‘(++)’ is applied to too many arguments
+      In the expression: postOrder j f ++ postOrder k f ++ [f i]
+      In an equation for ‘postOrder’:
+          postOrder (Nod i j k) = postOrder j f ++ postOrder k f ++ [f i]
+   |
+59 | postOrder (Nod i j k) = postOrder j f ++ postOrder k f++ [f i ]
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lab5.hs:59:37: error:
+    • Couldn't match type ‘(Int, Int)’ with ‘Int’
+      Expected: Int -> Int
+        Actual: (Int, Int) -> Int
+    • In the second argument of ‘postOrder’, namely ‘f’
+      In the first argument of ‘(++)’, namely ‘postOrder j f’
+      In the expression: postOrder j f ++ postOrder k f ++ [f i]
+   |
+59 | postOrder (Nod i j k) = postOrder j f ++ postOrder k f++ [f i ]
+   |                                     ^
+
+lab5.hs:59:54: error:
+    • Couldn't match type ‘(Int, Int)’ with ‘Int’
+      Expected: Int -> Int
+        Actual: (Int, Int) -> Int
+    • In the second argument of ‘postOrder’, namely ‘f’
+      In the first argument of ‘(++)’, namely ‘postOrder k f’
+      In the second argument of ‘(++)’, namely ‘postOrder k f ++ [f i]’
+   |
+59 | postOrder (Nod i j k) = postOrder j f ++ postOrder k f++ [f i ]
+   |                                                      ^
+
+lab5.hs:59:61: error:
+    • Couldn't match expected type ‘(Int, Int)’ with actual type ‘Int’
+    • In the first argument of ‘f’, namely ‘i’
+      In the expression: f i
+      In the second argument of ‘(++)’, namely ‘[f i]’
+   |
+59 | postOrder (Nod i j k) = postOrder j f ++ postOrder k f++ [f i ]
+   |                                                             ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> preOrder (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) (+1) 
+[4,2,8]
+ghci> inOrder (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) (+1) 
+*** Exception: lab5.hs:55:1-58: Non-exhaustive patterns in function inOrder
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> inOrder (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) (+1) 
+[2,4,8]
+ghci> postOrder (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) (+1) 
+[2,8,4]
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted ) [Source file changed]
+
+lab5.hs:62:1: error:
+    The type signature for ‘parcurgere_arb’
+      lacks an accompanying binding
+    Suggested fix: Perhaps use ‘parcurgere’ (Defined at lab5.hs:63:1)
+   |
+62 | parcurgere_arb :: Arb -> ( Arb -> (Int -> Int) -> [Int] )-> [Int]
+   | ^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+
+lab5.hs:63:22: error: Variable not in scope: arb
+   |
+63 | parcurgere_arb f = f arb id
+   |                      ^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab5.hs, interpreted )
+Ok, one module loaded.
+ghci> parcurgere (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) inOrdine 
+
+<interactive>:108:1: error:
+    Variable not in scope: parcurgere :: Arb -> t0 -> t
+
+<interactive>:108:64: error: Variable not in scope: inOrdine
+ghci> parcurgere_arb  (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) inOrdine 
+
+<interactive>:109:69: error:
+    Variable not in scope: inOrdine :: Arb -> (Int -> Int) -> [Int]
+ghci> :t id
+id :: a -> a
+ghci> parcurgere_arb  (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) inOrder
+[1,3,7]
+ghci> parcurgere_arb  (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) preOrder
+[3,1,7]
+ghci> parcurgere_arb  (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) pstOrder
+
+<interactive>:113:69: error:
+    Variable not in scope: pstOrder :: Arb -> (Int -> Int) -> [Int]
+    Suggested fix:
+      Perhaps use one of these:
+        ‘postOrder’ (line 59), ‘preOrder’ (line 51)
+ghci> parcurgere_arb  (Nod 3 (Nod 1 Frunza Frunza) (Nod 7 Frunza Frunza)) postOrder
+[1,7,3]
+ghci> :t Ord
+
+<interactive>:1:1: error:
+    • Illegal term-level use of the type constructor or class ‘Ord’
+    • imported from ‘Prelude’ at lab5.hs:1:1
+      (and originally defined in ‘GHC.Classes’)
+    • In the expression: Ord
+ghci> :t Arb
+
+<interactive>:1:1: error:
+    • Illegal term-level use of the type constructor or class ‘Arb’
+    • defined at lab5.hs:48:1
+    • In the expression: Arb
+ghci> 

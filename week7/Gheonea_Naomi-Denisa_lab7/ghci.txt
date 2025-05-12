@@ -1,0 +1,218 @@
+comshiro@Ubuntu24:~/PF$ cd week7
+comshiro@Ubuntu24:~/PF/week7$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :l lab7.hs
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+Ok, one module loaded.
+ghci> 
+^[OAghci> minList (listExample 212 [])
+1
+ghci> minList (listExample 2123 [])
+1
+ghci> minList (listExample 212354 [])
+1
+ghci> minList (listExample 2123546 [])
+1
+ghci> :set +s
+ghci> minList (listExample 2123546 [])
+1
+(1.06 secs, 526,705,056 bytes)
+ghci> minList (listExample 21235461 [])
+ 1
+(12.10 secs, 5,266,459,968 bytes)
+ghci>  comshiro@Ubuntu24:~/PF$ cd week7
+comshiro@Ubuntu24:~/PF/week7$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+:ghci> :l lab7.hs
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+Ok, one module loaded.
+ghci> :set +s
+ghci> minList (listExample 1000 [])
+1
+(0.01 secs, 317,016 bytes)
+ghci> minList (listExample 10000 [])
+1
+(0.01 secs, 2,545,656 bytes)
+ghci> minList (listExample 100000 [])
+1
+(0.05 secs, 24,865,648 bytes)
+ghci> minList (listExample 1000000 [])
+1
+(0.64 secs, 248,065,640 bytes)
+ghci> minList (listExample 10000000 [])
+1
+(5.72 secs, 2,480,065,640 bytes)
+ghci> minList (listExample 10000000 [])
+ghci> minList (listExample 30000000 [])
+1
+ghci> :set +s
+ghci> minList (listExample 20000000 [])
+1
+(10.08 secs, 4,960,065,648 bytes)
+ghci> minList (listExample 30000000 [])
+1
+(17.41 secs, 7,440,065,648 bytes)
+ghci> minList (listExample 30000000 [])
+1
+(17.41 secs, 7,440,065,648 bytes)
+ghci> minList (listExample 30005000 [])
+1
+(18.42 secs, 7,441,305,648 bytes)
+ghci> minList (listExample 30000000 [])
+1
+ghci> :set +s
+ghci> minList (listExample 20000000 [])
+1
+(10.08 secs, 4,960,065,648 bytes)
+ghci> minList (listExample 30000000 [])
+1
+(17.41 secs, 7,440,065,648 bytes)
+ghci> minList (listExample 30005000 [])
+1
+(18.42 secs, 7,441,305,648 bytes)
+ghci> minList (listExample 30000000 [])
+[1]+  Stopped                 ghci
+comshiro@Ubuntu24:~/PF/week7$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :l lab7.hs
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+
+lab7.hs:27:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+27 | insert :: a -> [a] -> [a]
+   | ^
+Failed, no modules loaded.
+ghci> :l lab7.hs
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+
+lab7.hs:29:32: error: parse error on input ‘=>’
+   |
+29 | insert a (hd: (hd':tl)) = if a => hd && a <= hd' then (hd: (a: (hd':tl)))
+   |                                ^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+
+lab7.hs:39:35: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+39 | --mergeSort :: Ord a => [a] -> [a]
+   |                                   ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+
+lab7.hs:37:35: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+37 | --mergeSort :: Ord a => [a] -> [a]
+   |                                   ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+
+lab7.hs:37:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+
+lab7.hs:34:63: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+34 |                                     (hd:(hd': (insert a tl )))
+   |                                                               ^
+Failed, no modules loaded.
+ghci> :r:r
+unknown command ':r:r'
+use :? for help.
+ghci> :r
+[1 of 2] Compiling Main             ( lab7.hs, interpreted )
+Ok, one module loaded.
+ghci> minList (listExample 1000000 [])
+1
+ghci> :set +S
+unknown option: 'S'
+ghci> :set +s
+ghci> minList (listExample 1000000 [])
+1
+(0.48 secs, 248,065,648 bytes)
+ghci> minList (listExample 2000000 [])
+1
+(1.12 secs, 496,065,648 bytes)
+ghci> minList (listExample 3000000 [])
+1
+(1.66 secs, 744,065,640 bytes)
+ghci> minList (listExample 4000000 [])
+1
+(2.21 secs, 992,065,640 bytes)
+ghci> minList (listExample 5000000 [])
+1
+(2.82 secs, 1,240,065,640 bytes)
+ghci> minList (listExample 6000000 [])
+1
+(3.08 secs, 1,488,065,648 bytes)
+ghci> minList (listExample 7000000 [])
+1
+(4.64 secs, 1,736,065,640 bytes)
+ghci> minList (listExample 8000000 [])
+^W1
+(5.43 secs, 1,984,065,640 bytes)
+ghci> minList (listExample 9000000 [])
+1
+(5.27 secs, 2,232,065,648 bytes)
+ghci> minList (listExample 10000000 [])
+1
+(4.87 secs, 2,480,065,648 bytes)
+ghci> minList (listExample 11000000 [])
+1
+(6.26 secs, 2,728,065,648 bytes)
+ghci> minList (listExample 12000000 [])
+
+1
+(6.31 secs, 2,976,065,656 bytes)
+ghci> 
+ghci> minList (listExample 13000000 [])
+1
+(6.62 secs, 3,224,065,640 bytes)
+ghci> minList (listExample 14000000 [])
+1
+(6.93 secs, 3,472,065,648 bytes)
+ghci> minList (listExample 15000000 [])
+1
+(8.58 secs, 3,720,065,648 bytes)
+ghci> minList (listExample 16000000 [])
+1
+(8.95 secs, 3,968,065,648 bytes)
+ghci> minList (listExample 17000000 [])
+1
+(8.56 secs, 4,216,065,648 bytes)
+ghci> minList (listExample 18000000 [])
+1
+(8.87 secs, 4,464,065,656 bytes)
+ghci> minList (listExample 19000000 [])
+1
+(10.54 secs, 4,712,065,656 bytes)
+ghci> maxList (listExample 1000000 [])
+^[[A^[[B^?^?^CInterrupted.
+ghci> maxList (listExample 100 [])
+100
+(0.00 secs, 453,320 bytes)
+ghci> maxList (listExample 1000 [])
+1000
+(0.09 secs, 29,168,048 bytes)
+ghci> maxList (listExample 10000 [])
+10000
+(6.75 secs, 2,811,239,552 bytes)
+ghci> maxList (listExample 100000 [])
+ghci> maxList (listExample 10000 [])
+10000
+ghci> :set +s
+ghci> maxList (listExample 10000 [])
+10000
+(5.79 secs, 2,811,239,552 bytes)
+ghci> maxList (listExample 20000 [])
+20000
+(23.55 secs, 11,222,411,064 bytes)
+ghci> 

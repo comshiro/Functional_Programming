@@ -1,0 +1,1011 @@
+instance (Show a, Show b) => Show (a, b) -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c) => Show (a, b, c)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d) => Show (a, b, c, d)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e) =>
+         Show (a, b, c, d, e)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f) =>
+         Show (a, b, c, d, e, f)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f,
+          Show g) =>
+         Show (a, b, c, d, e, f, g)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f, Show g,
+          Show h) =>
+         Show (a, b, c, d, e, f, g, h)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f, Show g,
+          Show h, Show i) =>
+         Show (a, b, c, d, e, f, g, h, i)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f, Show g,
+          Show h, Show i, Show j) =>
+         Show (a, b, c, d, e, f, g, h, i, j)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f, Show g,
+          Show h, Show i, Show j, Show k) =>
+         Show (a, b, c, d, e, f, g, h, i, j, k)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f, Show g,
+          Show h, Show i, Show j, Show k, Show l) =>
+         Show (a, b, c, d, e, f, g, h, i, j, k, l)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f, Show g,
+          Show h, Show i, Show j, Show k, Show l, Show m) =>
+         Show (a, b, c, d, e, f, g, h, i, j, k, l, m)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f, Show g,
+          Show h, Show i, Show j, Show k, Show l, Show m, Show n) =>
+         Show (a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+  -- Defined in ‘GHC.Show’
+instance (Show a, Show b, Show c, Show d, Show e, Show f, Show g,
+          Show h, Show i, Show j, Show k, Show l, Show m, Show n, Show o) =>
+         Show (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
+  -- Defined in ‘GHC.Show’
+instance Show Bool -- Defined in ‘GHC.Show’
+instance Show Char -- Defined in ‘GHC.Show’
+instance Show Int -- Defined in ‘GHC.Show’
+instance Show Integer -- Defined in ‘GHC.Show’
+instance Show a => Show (Maybe a) -- Defined in ‘GHC.Show’
+instance Show Ordering -- Defined in ‘GHC.Show’
+instance Show GHC.Types.RuntimeRep -- Defined in ‘GHC.Show’
+instance Show a => Show (Solo a) -- Defined in ‘GHC.Show’
+instance Show Word -- Defined in ‘GHC.Show’
+instance Show a => Show [a] -- Defined in ‘GHC.Show’
+instance (Show a, Show b) => Show (Either a b)
+  -- Defined in ‘Data.Either’
+ghci> :info Eq
+type Eq :: * -> Constraint
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+  {-# MINIMAL (==) | (/=) #-}
+        -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b) => Eq (Either a b)
+  -- Defined in ‘Data.Either’
+instance Eq a => Eq (Maybe a) -- Defined in ‘GHC.Maybe’
+instance Eq Integer -- Defined in ‘GHC.Num.Integer’
+instance Eq () -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b) => Eq (a, b) -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c) => Eq (a, b, c)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d) => Eq (a, b, c, d)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e) => Eq (a, b, c, d, e)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f) =>
+         Eq (a, b, c, d, e, f)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g) =>
+         Eq (a, b, c, d, e, f, g)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h) =>
+         Eq (a, b, c, d, e, f, g, h)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i) =>
+         Eq (a, b, c, d, e, f, g, h, i)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j) =>
+         Eq (a, b, c, d, e, f, g, h, i, j)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m, Eq n) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m, Eq n, Eq o) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
+  -- Defined in ‘GHC.Classes’
+instance Eq Bool -- Defined in ‘GHC.Classes’
+instance Eq Char -- Defined in ‘GHC.Classes’
+instance Eq Double -- Defined in ‘GHC.Classes’
+instance Eq Float -- Defined in ‘GHC.Classes’
+instance Eq Int -- Defined in ‘GHC.Classes’
+instance Eq Ordering -- Defined in ‘GHC.Classes’
+instance Eq a => Eq (Solo a) -- Defined in ‘GHC.Classes’
+instance Eq Word -- Defined in ‘GHC.Classes’
+instance Eq a => Eq [a] -- Defined in ‘GHC.Classes’
+ghci> :info Ordering
+type Ordering :: *
+data Ordering = LT | EQ | GT
+        -- Defined in ‘GHC.Types’
+instance Monoid Ordering -- Defined in ‘GHC.Base’
+instance Semigroup Ordering -- Defined in ‘GHC.Base’
+instance Bounded Ordering -- Defined in ‘GHC.Enum’
+instance Enum Ordering -- Defined in ‘GHC.Enum’
+instance Read Ordering -- Defined in ‘GHC.Read’
+instance Eq Ordering -- Defined in ‘GHC.Classes’
+instance Ord Ordering -- Defined in ‘GHC.Classes’
+instance Show Ordering -- Defined in ‘GHC.Show’
+ghci> :info Read
+type Read :: * -> Constraint
+class Read a where
+  readsPrec :: Int -> ReadS a
+  readList :: ReadS [a]
+  GHC.Read.readPrec :: Text.ParserCombinators.ReadPrec.ReadPrec a
+  GHC.Read.readListPrec :: Text.ParserCombinators.ReadPrec.ReadPrec
+                             [a]
+  {-# MINIMAL readsPrec | readPrec #-}
+        -- Defined in ‘GHC.Read’
+instance (Read a, Read b) => Read (Either a b)
+  -- Defined in ‘Data.Either’
+instance Read () -- Defined in ‘GHC.Read’
+instance (Read a, Read b) => Read (a, b) -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c) => Read (a, b, c)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d) => Read (a, b, c, d)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e) =>
+         Read (a, b, c, d, e)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f) =>
+         Read (a, b, c, d, e, f)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f,
+          Read g) =>
+         Read (a, b, c, d, e, f, g)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f, Read g,
+          Read h) =>
+         Read (a, b, c, d, e, f, g, h)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f, Read g,
+          Read h, Read i) =>
+         Read (a, b, c, d, e, f, g, h, i)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f, Read g,
+          Read h, Read i, Read j) =>
+         Read (a, b, c, d, e, f, g, h, i, j)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f, Read g,
+          Read h, Read i, Read j, Read k) =>
+         Read (a, b, c, d, e, f, g, h, i, j, k)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f, Read g,
+          Read h, Read i, Read j, Read k, Read l) =>
+         Read (a, b, c, d, e, f, g, h, i, j, k, l)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f, Read g,
+          Read h, Read i, Read j, Read k, Read l, Read m) =>
+         Read (a, b, c, d, e, f, g, h, i, j, k, l, m)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f, Read g,
+          Read h, Read i, Read j, Read k, Read l, Read m, Read n) =>
+         Read (a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+  -- Defined in ‘GHC.Read’
+instance (Read a, Read b, Read c, Read d, Read e, Read f, Read g,
+          Read h, Read i, Read j, Read k, Read l, Read m, Read n, Read o) =>
+         Read (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
+  -- Defined in ‘GHC.Read’
+instance Read Bool -- Defined in ‘GHC.Read’
+instance Read Char -- Defined in ‘GHC.Read’
+instance Read Double -- Defined in ‘GHC.Read’
+instance Read Float -- Defined in ‘GHC.Read’
+instance Read Int -- Defined in ‘GHC.Read’
+instance Read Integer -- Defined in ‘GHC.Read’
+instance Read a => Read (Maybe a) -- Defined in ‘GHC.Read’
+instance Read Ordering -- Defined in ‘GHC.Read’
+instance Read a => Read (Solo a) -- Defined in ‘GHC.Read’
+instance Read Word -- Defined in ‘GHC.Read’
+instance Read a => Read [a] -- Defined in ‘GHC.Read’
+ghci> :info Enum
+type Enum :: * -> Constraint
+class Enum a where
+  succ :: a -> a
+  pred :: a -> a
+  toEnum :: Int -> a
+  fromEnum :: a -> Int
+  enumFrom :: a -> [a]
+  enumFromThen :: a -> a -> [a]
+  enumFromTo :: a -> a -> [a]
+  enumFromThenTo :: a -> a -> a -> [a]
+  {-# MINIMAL toEnum, fromEnum #-}
+        -- Defined in ‘GHC.Enum’
+instance Enum Double -- Defined in ‘GHC.Float’
+instance Enum Float -- Defined in ‘GHC.Float’
+instance Enum () -- Defined in ‘GHC.Enum’
+instance Enum Bool -- Defined in ‘GHC.Enum’
+instance Enum Char -- Defined in ‘GHC.Enum’
+instance Enum Int -- Defined in ‘GHC.Enum’
+instance Enum Integer -- Defined in ‘GHC.Enum’
+instance Enum Ordering -- Defined in ‘GHC.Enum’
+instance Enum a => Enum (Solo a) -- Defined in ‘GHC.Enum’
+instance Enum Word -- Defined in ‘GHC.Enum’
+ghci> :info Num
+type Num :: * -> Constraint
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+        -- Defined in ‘GHC.Num’
+instance Num Double -- Defined in ‘GHC.Float’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Word -- Defined in ‘GHC.Num’
+ghci> :load lab6.hs
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+Ok, one module loaded.
+ghci> :t Cons( Cons false) true
+
+<interactive>:1:12: error:
+    Variable not in scope: false :: [Bool]
+    Suggested fix:
+      Perhaps use data constructor ‘False’ (imported from Prelude)
+
+<interactive>:1:19: error:
+    Variable not in scope: true
+    Suggested fix:
+      Perhaps use data constructor ‘True’ (imported from Prelude)
+ghci> :t (Cons( Cons false) true)
+
+<interactive>:1:13: error:
+    Variable not in scope: false :: [Bool]
+    Suggested fix:
+      Perhaps use data constructor ‘False’ (imported from Prelude)
+
+<interactive>:1:20: error:
+    Variable not in scope: true
+    Suggested fix:
+      Perhaps use data constructor ‘True’ (imported from Prelude)
+ghci> :iinfo Eq
+unknown command ':iinfo'
+use :? for help.
+ghci> :info Eq
+type Eq :: * -> Constraint
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+  {-# MINIMAL (==) | (/=) #-}
+        -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b) => Eq (Either a b)
+  -- Defined in ‘Data.Either’
+instance Eq a => Eq (Maybe a) -- Defined in ‘GHC.Maybe’
+instance Eq Integer -- Defined in ‘GHC.Num.Integer’
+instance Eq () -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b) => Eq (a, b) -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c) => Eq (a, b, c)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d) => Eq (a, b, c, d)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e) => Eq (a, b, c, d, e)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f) =>
+         Eq (a, b, c, d, e, f)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g) =>
+         Eq (a, b, c, d, e, f, g)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h) =>
+         Eq (a, b, c, d, e, f, g, h)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i) =>
+         Eq (a, b, c, d, e, f, g, h, i)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j) =>
+         Eq (a, b, c, d, e, f, g, h, i, j)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m, Eq n) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m, Eq n, Eq o) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
+  -- Defined in ‘GHC.Classes’
+instance Eq Bool -- Defined in ‘GHC.Classes’
+instance Eq Char -- Defined in ‘GHC.Classes’
+instance Eq Double -- Defined in ‘GHC.Classes’
+instance Eq Float -- Defined in ‘GHC.Classes’
+instance Eq Int -- Defined in ‘GHC.Classes’
+instance Eq Ordering -- Defined in ‘GHC.Classes’
+instance Eq a => Eq (Solo a) -- Defined in ‘GHC.Classes’
+instance Eq Word -- Defined in ‘GHC.Classes’
+instance Eq a => Eq [a] -- Defined in ‘GHC.Classes’
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted ) [Source file changed]
+
+lab6.hs:2:35: error: parse error on input ‘,’
+  |
+2 | data Nat = Cons [Bool] deriving Eq, Ord, Integral, Num
+  |                                   ^
+Failed, no modules loaded.
+ghci> :t cONScONS
+
+<interactive>:1:1: error: Variable not in scope: cONScONS
+ghci> :t Cons
+
+<interactive>:1:1: error: Data constructor not in scope: Cons
+ghci> :info Eq
+type Eq :: * -> Constraint
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+  {-# MINIMAL (==) | (/=) #-}
+        -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b) => Eq (Either a b)
+  -- Defined in ‘Data.Either’
+instance Eq a => Eq (Maybe a) -- Defined in ‘GHC.Maybe’
+instance Eq Integer -- Defined in ‘GHC.Num.Integer’
+instance Eq () -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b) => Eq (a, b) -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c) => Eq (a, b, c)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d) => Eq (a, b, c, d)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e) => Eq (a, b, c, d, e)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f) =>
+         Eq (a, b, c, d, e, f)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g) =>
+         Eq (a, b, c, d, e, f, g)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h) =>
+         Eq (a, b, c, d, e, f, g, h)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i) =>
+         Eq (a, b, c, d, e, f, g, h, i)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j) =>
+         Eq (a, b, c, d, e, f, g, h, i, j)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m, Eq n) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+  -- Defined in ‘GHC.Classes’
+instance (Eq a, Eq b, Eq c, Eq d, Eq e, Eq f, Eq g, Eq h, Eq i,
+          Eq j, Eq k, Eq l, Eq m, Eq n, Eq o) =>
+         Eq (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
+  -- Defined in ‘GHC.Classes’
+instance Eq Bool -- Defined in ‘GHC.Classes’
+instance Eq Char -- Defined in ‘GHC.Classes’
+instance Eq Double -- Defined in ‘GHC.Classes’
+instance Eq Float -- Defined in ‘GHC.Classes’
+instance Eq Int -- Defined in ‘GHC.Classes’
+instance Eq Ordering -- Defined in ‘GHC.Classes’
+instance Eq a => Eq (Solo a) -- Defined in ‘GHC.Classes’
+instance Eq Word -- Defined in ‘GHC.Classes’
+instance Eq a => Eq [a] -- Defined in ‘GHC.Classes’
+ghci> :t Cons:r
+
+<interactive>:1:1: error: Data constructor not in scope: Cons
+
+<interactive>:1:6: error: Variable not in scope: r :: [a]
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+
+lab6.hs:5:31: error:
+    Variable not in scope: true :: Bool
+    Suggested fix:
+      Perhaps use data constructor ‘True’ (imported from Prelude)
+  |
+5 |     (==) (Cons [])(Cons []) = true 
+  |                               ^^^^
+
+lab6.hs:6:12: error:
+    • The constructor ‘Cons’ should have 1 argument, but has been given 2
+    • In the pattern: Cons x y
+      In an equation for ‘==’:
+          (==) (Cons x y) (Cons m p) = ((==) x m) && ((==) y p)
+      In the instance declaration for ‘Eq Nat’
+  |
+6 |     (==)  (Cons x y) (Cons m p) = ( (==) x m) && ((==) y p)
+  |            ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+
+lab6.hs:5:31: error:
+    Variable not in scope: true :: Bool
+    Suggested fix:
+      Perhaps use data constructor ‘True’ (imported from Prelude)
+  |
+5 |     (==) (Cons [])(Cons []) = true 
+  |                               ^^^^
+
+lab6.hs:6:12: error:
+    • The constructor ‘Cons’ should have 1 argument, but has been given 2
+    • In the pattern: Cons x y
+      In an equation for ‘==’:
+          (==) (Cons x y) (Cons m p) = ((==) x m) && ((==) y p)
+      In the instance declaration for ‘Eq Nat’
+  |
+6 |     (==)  (Cons x y) (Cons m p) = ( (==) x m) && ((==) y p)
+  |            ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+
+lab6.hs:5:31: error:
+    Variable not in scope: true :: Bool
+    Suggested fix:
+      Perhaps use data constructor ‘True’ (imported from Prelude)
+  |
+5 |     (==) (Cons [])(Cons []) = true 
+  |                               ^^^^
+
+lab6.hs:6:12: error:
+    • The constructor ‘Cons’ should have 1 argument, but has been given 2
+    • In the pattern: Cons x (y)
+      In an equation for ‘==’:
+          (==) (Cons x (y)) (Cons m p) = ((==) x m) && ((==) y p)
+      In the instance declaration for ‘Eq Nat’
+  |
+6 |     (==)  (Cons x (y)) (Cons m p) = ( (==) x m) && ((==) y p)
+  |            ^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :info Ord
+type Ord :: * -> Constraint
+class Eq a => Ord a where
+  compare :: a -> a -> Ordering
+  (<) :: a -> a -> Bool
+  (<=) :: a -> a -> Bool
+  (>) :: a -> a -> Bool
+  (>=) :: a -> a -> Bool
+  max :: a -> a -> a
+  min :: a -> a -> a
+  {-# MINIMAL compare | (<=) #-}
+        -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b) => Ord (Either a b)
+  -- Defined in ‘Data.Either’
+instance Ord a => Ord (Maybe a) -- Defined in ‘GHC.Maybe’
+instance Ord Integer -- Defined in ‘GHC.Num.Integer’
+instance Ord () -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b) => Ord (a, b) -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c) => Ord (a, b, c)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d) => Ord (a, b, c, d)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e) => Ord (a, b, c, d, e)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f) =>
+         Ord (a, b, c, d, e, f)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g) =>
+         Ord (a, b, c, d, e, f, g)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g,
+          Ord h) =>
+         Ord (a, b, c, d, e, f, g, h)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g, Ord h,
+          Ord i) =>
+         Ord (a, b, c, d, e, f, g, h, i)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g, Ord h,
+          Ord i, Ord j) =>
+         Ord (a, b, c, d, e, f, g, h, i, j)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g, Ord h,
+          Ord i, Ord j, Ord k) =>
+         Ord (a, b, c, d, e, f, g, h, i, j, k)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g, Ord h,
+          Ord i, Ord j, Ord k, Ord l) =>
+         Ord (a, b, c, d, e, f, g, h, i, j, k, l)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g, Ord h,
+          Ord i, Ord j, Ord k, Ord l, Ord m) =>
+         Ord (a, b, c, d, e, f, g, h, i, j, k, l, m)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g, Ord h,
+          Ord i, Ord j, Ord k, Ord l, Ord m, Ord n) =>
+         Ord (a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+  -- Defined in ‘GHC.Classes’
+instance (Ord a, Ord b, Ord c, Ord d, Ord e, Ord f, Ord g, Ord h,
+          Ord i, Ord j, Ord k, Ord l, Ord m, Ord n, Ord o) =>
+         Ord (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
+  -- Defined in ‘GHC.Classes’
+instance Ord Bool -- Defined in ‘GHC.Classes’
+instance Ord Char -- Defined in ‘GHC.Classes’
+instance Ord Double -- Defined in ‘GHC.Classes’
+instance Ord Float -- Defined in ‘GHC.Classes’
+instance Ord Int -- Defined in ‘GHC.Classes’
+instance Ord Ordering -- Defined in ‘GHC.Classes’
+instance Ord a => Ord (Solo a) -- Defined in ‘GHC.Classes’
+instance Ord Word -- Defined in ‘GHC.Classes’
+instance Ord a => Ord [a] -- Defined in ‘GHC.Classes’
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+
+lab6.hs:5:32: error:
+    Variable not in scope: true :: Bool
+    Suggested fix:
+      Perhaps use data constructor ‘True’ (imported from Prelude)
+  |
+5 |     (==) (Cons []) (Cons []) = true 
+  |                                ^^^^
+
+lab6.hs:6:35: error:
+    Variable not in scope: false :: Bool
+    Suggested fix:
+      Perhaps use data constructor ‘False’ (imported from Prelude)
+  |
+6 |     (==) (Cons []) (Cons (x:y)) = false
+  |                                   ^^^^^
+
+lab6.hs:7:35: error:
+    Variable not in scope: false :: Bool
+    Suggested fix:
+      Perhaps use data constructor ‘False’ (imported from Prelude)
+  |
+7 |     (==) (Cons (x:y)) (Cons []) = false
+  |                                   ^^^^^
+
+lab6.hs:11:32: error:
+    Variable not in scope: true :: Bool
+    Suggested fix:
+      Perhaps use data constructor ‘True’ (imported from Prelude)
+   |
+11 |     (<=) (Cons []) (Cons []) = true
+   |                                ^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+Ok, one module loaded.
+ghci> Cons [True:False] 
+
+<interactive>:24:7: error:
+    • Couldn't match expected type ‘Bool’ with actual type ‘[Bool]’
+    • In the expression: True : False
+      In the first argument of ‘Cons’, namely ‘[True : False]’
+      In the expression: Cons [True : False]
+
+<interactive>:24:12: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the second argument of ‘(:)’, namely ‘False’
+      In the expression: True : False
+      In the first argument of ‘Cons’, namely ‘[True : False]’
+ghci> Cons [True:False] (==) Cons [True:False]
+
+<interactive>:25:1: error:
+    • Couldn't match expected type ‘(a0 -> a0 -> Bool)
+                                    -> ([Bool] -> Nat) -> [[Bool]] -> t’
+                  with actual type ‘Nat’
+    • The function ‘Cons’ is applied to four value arguments,
+        but its type ‘[Bool] -> Nat’ has only one
+      In the expression: Cons [True : False] (==) Cons [True : False]
+      In an equation for ‘it’:
+          it = Cons [True : False] (==) Cons [True : False]
+    • Relevant bindings include it :: t (bound at <interactive>:25:1)
+
+<interactive>:25:7: error:
+    • Couldn't match expected type ‘Bool’ with actual type ‘[Bool]’
+    • In the expression: True : False
+      In the first argument of ‘Cons’, namely ‘[True : False]’
+      In the expression: Cons [True : False] (==) Cons [True : False]
+
+<interactive>:25:12: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the second argument of ‘(:)’, namely ‘False’
+      In the expression: True : False
+      In the first argument of ‘Cons’, namely ‘[True : False]’
+
+<interactive>:25:35: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the second argument of ‘(:)’, namely ‘False’
+      In the expression: True : False
+      In the fourth argument of ‘Cons’, namely ‘[True : False]’
+ghci> Cons [True::False] (==) Cons [True::False]
+
+<interactive>:26:13: error:
+    Not in scope: type constructor or class ‘False’
+    Suggested fix:
+      Perhaps you intended to use DataKinds
+      to refer to the data constructor of that name?
+
+<interactive>:26:37: error:
+    Not in scope: type constructor or class ‘False’
+    Suggested fix:
+      Perhaps you intended to use DataKinds
+      to refer to the data constructor of that name?
+ghci> (Cons True False) (==) (Cons True False)
+
+<interactive>:27:1: error:
+    • Couldn't match expected type ‘Bool
+                                    -> (a0 -> a0 -> Bool) -> t0 -> t’
+                  with actual type ‘Nat’
+    • The function ‘Cons’ is applied to four value arguments,
+        but its type ‘[Bool] -> Nat’ has only one
+      In the expression: (Cons True False) (==) (Cons True False)
+      In an equation for ‘it’:
+          it = (Cons True False) (==) (Cons True False)
+    • Relevant bindings include it :: t (bound at <interactive>:27:1)
+
+<interactive>:27:7: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the first argument of ‘Cons’, namely ‘True’
+      In the expression: (Cons True False) (==) (Cons True False)
+      In an equation for ‘it’:
+          it = (Cons True False) (==) (Cons True False)
+
+<interactive>:27:25: error:
+    • Couldn't match expected type ‘Bool -> t0’ with actual type ‘Nat’
+    • The function ‘Cons’ is applied to two value arguments,
+        but its type ‘[Bool] -> Nat’ has only one
+      In the fourth argument of ‘Cons’, namely ‘(Cons True False)’
+      In the expression: (Cons True False) (==) (Cons True False)
+
+<interactive>:27:30: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the first argument of ‘Cons’, namely ‘True’
+      In the fourth argument of ‘Cons’, namely ‘(Cons True False)’
+      In the expression: (Cons True False) (==) (Cons True False)
+ghci> [True:False] (==) [True:False]
+
+<interactive>:28:1: error:
+    • Couldn't match expected type: (a0 -> a0 -> Bool) -> [[Bool]] -> t
+                  with actual type: [[Bool]]
+    • The function ‘[True : False]’ is applied to two value arguments,
+        but its type ‘[[Bool]]’ has none
+      In the expression: [True : False] (==) [True : False]
+      In an equation for ‘it’: it = [True : False] (==) [True : False]
+    • Relevant bindings include it :: t (bound at <interactive>:28:1)
+
+<interactive>:28:7: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the second argument of ‘(:)’, namely ‘False’
+      In the expression: True : False
+      In the expression: [True : False]
+
+<interactive>:28:25: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Bool’
+    • In the second argument of ‘(:)’, namely ‘False’
+      In the expression: True : False
+      In the second argument of ‘[True : False]’, namely ‘[True : False]’
+ghci> Cons [True,False] (==) Cons [True,False]
+
+<interactive>:29:1: error:
+    • Couldn't match expected type ‘(a0 -> a0 -> Bool)
+                                    -> ([Bool] -> Nat) -> [Bool] -> t’
+                  with actual type ‘Nat’
+    • The function ‘Cons’ is applied to four value arguments,
+        but its type ‘[Bool] -> Nat’ has only one
+      In the expression: Cons [True, False] (==) Cons [True, False]
+      In an equation for ‘it’:
+          it = Cons [True, False] (==) Cons [True, False]
+    • Relevant bindings include it :: t (bound at <interactive>:29:1)
+ghci> Cons [True,False] (==) Cons [True,False]
+ghci> Cons [True, False] (==) Cons [True, False]
+
+<interactive>:30:1: error:
+    • Couldn't match expected type ‘(a0 -> a0 -> Bool)
+                                    -> ([Bool] -> Nat) -> [Bool] -> t’
+                  with actual type ‘Nat’
+    • The function ‘Cons’ is applied to four value arguments,
+        but its type ‘[Bool] -> Nat’ has only one
+      In the expression: Cons [True, False] (==) Cons [True, False]
+      In an equation for ‘it’:
+          it = Cons [True, False] (==) Cons [True, False]
+    • Relevant bindings include it :: t (bound at <interactive>:30:1)
+ghci> Cons [True,False] (==) Cons [True,False]
+
+<interactive>:31:1: error:
+    • Couldn't match expected type ‘(a0 -> a0 -> Bool)
+                                    -> ([Bool] -> Nat) -> [Bool] -> t’
+                  with actual type ‘Nat’
+    • The function ‘Cons’ is applied to four value arguments,
+        but its type ‘[Bool] -> Nat’ has only one
+      In the expression: Cons [True, False] (==) Cons [True, False]
+      In an equation for ‘it’:
+          it = Cons [True, False] (==) Cons [True, False]
+    • Relevant bindings include it :: t (bound at <interactive>:31:1)
+ghci> Cons [True::False] (==) Cons [True::False]
+
+<interactive>:32:13: error:
+    Not in scope: type constructor or class ‘False’
+    Suggested fix:
+      Perhaps you intended to use DataKinds
+      to refer to the data constructor of that name?
+
+<interactive>:32:37: error:
+    Not in scope: type constructor or class ‘False’
+    Suggested fix:
+      Perhaps you intended to use DataKinds
+      to refer to the data constructor of that name?
+ghci> Cons [True, False] (==) Cons [True, False]
+
+<interactive>:33:1: error:
+    • Couldn't match expected type ‘(a0 -> a0 -> Bool)
+                                    -> ([Bool] -> Nat) -> [Bool] -> t’
+                  with actual type ‘Nat’
+    • The function ‘Cons’ is applied to four value arguments,
+        but its type ‘[Bool] -> Nat’ has only one
+      In the expression: Cons [True, False] (==) Cons [True, False]
+      In an equation for ‘it’:
+          it = Cons [True, False] (==) Cons [True, False]
+    • Relevant bindings include it :: t (bound at <interactive>:33:1)
+ghci> [True, False] (==) [True, False]
+
+<interactive>:34:1: error:
+    • Couldn't match expected type: (a0 -> a0 -> Bool) -> [Bool] -> t
+                  with actual type: [Bool]
+    • The function ‘[True, False]’ is applied to two value arguments,
+        but its type ‘[Bool]’ has none
+      In the expression: [True, False] (==) [True, False]
+      In an equation for ‘it’: it = [True, False] (==) [True, False]
+    • Relevant bindings include it :: t (bound at <interactive>:34:1)
+ghci> :info Complex
+
+<interactive>:1:1: error: Not in scope: ‘Complex’
+ghci> (Cons [True, False]) (==) (Cons [True, False])
+
+<interactive>:36:1: error:
+    • Couldn't match expected type ‘(a0 -> a0 -> Bool) -> Nat -> t’
+                  with actual type ‘Nat’
+    • The function ‘Cons’ is applied to three value arguments,
+        but its type ‘[Bool] -> Nat’ has only one
+      In the expression: (Cons [True, False]) (==) (Cons [True, False])
+      In an equation for ‘it’:
+          it = (Cons [True, False]) (==) (Cons [True, False])
+    • Relevant bindings include it :: t (bound at <interactive>:36:1)
+ghci> (Cons [True, False]) == (Cons [True, False])
+True
+ghci> (==)(Cons [True, False]) (Cons [True, False])
+True
+ghci> (==)(Cons []) (Cons [])
+True
+ghci> (==)(Cons []) (Cons [True])
+False
+ghci> (==)(Cons []) (Cons [False])
+False
+ghci> (==)(Cons []) (Cons [False, True])
+False
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted ) [Source file changed]
+
+lab6.hs:26:19: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+26 |     is Complex :: 
+   |                   ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+
+lab6.hs:26:19: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+26 |     is Complex :: 
+   |                   ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+
+lab6.hs:9:54: error:
+    • Couldn't match expected type ‘Nat’ with actual type ‘[Bool]’
+    • In the second argument of ‘(==)’, namely ‘y’
+      In the expression: (==) (Cons []) y
+      In an equation for ‘==’:
+          (==) (Cons []) (Cons (False : y)) = (==) (Cons []) y
+  |
+9 |     (==) (Cons []) (Cons (False:y)) = (==) (Cons []) y
+  |                                                      ^
+
+lab6.hs:11:47: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Nat’
+    • In the second argument of ‘(==)’, namely ‘(Cons [])’
+      In the expression: (==) y (Cons [])
+      In an equation for ‘==’:
+          (==) (Cons (False : y)) (Cons []) = (==) y (Cons [])
+   |
+11 |     (==) (Cons (False:y)) (Cons []) = (==) y (Cons [])
+   |                                               ^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+
+lab6.hs:11:47: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Nat’
+    • In the second argument of ‘(==)’, namely ‘(Cons [])’
+      In the expression: (==) y (Cons [])
+      In an equation for ‘==’:
+          (==) (Cons (False : y)) (Cons []) = (==) y (Cons [])
+   |
+11 |     (==) (Cons (False:y)) (Cons []) = (==) y (Cons [])
+   |                                               ^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+
+lab6.hs:11:47: error:
+    • Couldn't match expected type ‘[Bool]’ with actual type ‘Nat’
+    • In the second argument of ‘(==)’, namely ‘(Cons [])’
+      In the expression: (==) y (Cons [])
+      In an equation for ‘==’:
+          (==) (Cons (False : y)) (Cons []) = (==) y (Cons [])
+   |
+11 |     (==) (Cons (False:y)) (Cons []) = (==) y (Cons [])
+   |                                               ^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+Ok, one module loaded.
+ghci> (==)(Cons []) (Cons [False, True])
+False
+ghci> (==)(Cons []) (Cons [False])
+True
+ghci> (==)(Cons [False, True, False]) (Cons [False, True, False])
+True
+ghci> (==)(Cons [False, True, False]) (Cons [False, True, False, False])
+False
+ghci> (<=)(Cons [False, True, True]) (Cons [False, True, False, False])
+False
+ghci> (?)(Cons [False, True, True]) (Cons [False, True, False, False])
+
+<interactive>:54:1: error:
+    Variable not in scope: (?) :: Nat -> Nat -> t
+ghci> (>)(Cons [False, True, True]) (Cons [False, True, False, False])
+True
+ghci> (>)(Cons [False, True, True]) (Cons [])
+*** Exception: lab6.hs:(15,5)-(16,76): Non-exhaustive patterns in function <=
+
+ghci> (>)(Cons [False, True, True]) (Cons [])
+*** Exception: lab6.hs:(15,5)-(16,76): Non-exhaustive patterns in function <=
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> (>)(Cons [False, True, True]) (Cons [])
+*** Exception: lab6.hs:(15,5)-(18,76): Non-exhaustive patterns in function <=
+
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted ) [Source file changed]
+
+lab6.hs:14:27: error:
+    • Couldn't match expected type ‘Bool’ with actual type ‘[a0]’
+    • In the pattern: x : y
+      In the pattern: [x : y]
+      In the pattern: Cons [x : y]
+   |
+14 |     (<=) (Cons []) (Cons [x:y]) = True
+   |                           ^^^
+
+lab6.hs:15:17: error:
+    • Couldn't match expected type ‘Bool’ with actual type ‘[Bool]’
+    • In the pattern: True : y
+      In the pattern: [True : y]
+      In the pattern: Cons [True : y]
+   |
+15 |     (<=) (Cons [True:y]) (Cons []) = False
+   |                 ^^^^^^
+
+lab6.hs:16:17: error:
+    • Couldn't match expected type ‘Bool’ with actual type ‘[Bool]’
+    • In the pattern: False : y
+      In the pattern: [False : y]
+      In the pattern: Cons [False : y]
+   |
+16 |     (<=) (Cons [False:y]) (Cons []) = (<=) (Cons y) (Cons [])
+   |                 ^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab6.hs, interpreted )
+Ok, one module loaded.
+ghci> (>)(Cons [False, True, True]) (Cons [])
+True
+ghci> (<=)(Cons [False, True, True]) (Cons [False, True, False, False])
+False
+ghci> :t Integral
+
+<interactive>:1:1: error:
+    • Illegal term-level use of the type constructor or class ‘Integral’
+    • imported from ‘Prelude’ at lab6.hs:1:1
+      (and originally defined in ‘GHC.Real’)
+    • In the expression: Integral
+ghci> :info Integral
+type Integral :: * -> Constraint
+class (Real a, Enum a) => Integral a where
+  quot :: a -> a -> a
+  rem :: a -> a -> a
+  div :: a -> a -> a
+  mod :: a -> a -> a
+  quotRem :: a -> a -> (a, a)
+  divMod :: a -> a -> (a, a)
+  toInteger :: a -> Integer
+  {-# MINIMAL quotRem, toInteger #-}
+        -- Defined in ‘GHC.Real’
+instance Integral Int -- Defined in ‘GHC.Real’
+instance Integral Integer -- Defined in ‘GHC.Real’
+instance Integral Word -- Defined in ‘GHC.Real’
+ghci> :t Num
+
+<interactive>:1:1: error:
+    • Illegal term-level use of the type constructor or class ‘Num’
+    • imported from ‘Prelude’ at lab6.hs:1:1
+      (and originally defined in ‘GHC.Num’)
+    • Perhaps use variable ‘sum’ (imported from Prelude)
+    • In the expression: Num
+ghci> :info Num
+type Num :: * -> Constraint
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+        -- Defined in ‘GHC.Num’
+instance Num Double -- Defined in ‘GHC.Float’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Word -- Defined in ‘GHC.Num’
+ghci> :info Integral
+type Integral :: * -> Constraint
+class (Real a, Enum a) => Integral a where
+  quot :: a -> a -> a
+  rem :: a -> a -> a
+  div :: a -> a -> a
+  mod :: a -> a -> a
+  quotRem :: a -> a -> (a, a)
+  divMod :: a -> a -> (a, a)
+  toInteger :: a -> Integer
+  {-# MINIMAL quotRem, toInteger #-}
+        -- Defined in ‘GHC.Real’
+instance Integral Int -- Defined in ‘GHC.Real’
+instance Integral Integer -- Defined in ‘GHC.Real’
+instance Integral Word -- Defined in ‘GHC.Real’
+ghci> :info Order
+
+<interactive>:1:1: error: Not in scope: ‘Order’
+ghci> :t  Order
+
+<interactive>:1:1: error: Data constructor not in scope: Order
+ghci> :t  order
+
+<interactive>:1:1: error: Variable not in scope: order
+ghci> :t  Order
+
+<interactive>:1:1: error: Data constructor not in scope: Order
+ghci> 

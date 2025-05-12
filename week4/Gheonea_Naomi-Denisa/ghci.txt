@@ -1015,4 +1015,4 @@ lab4.hs:154:1: warning: [-Woverlapping-patterns]
 154 | simpl (NOT (NOT x)) = (simpl x)
     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Ok, one module loaded.
-ghci>
+ghci> 

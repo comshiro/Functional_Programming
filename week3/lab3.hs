@@ -22,7 +22,6 @@ getColor (Tablet _ _ c) = c
 
 data Arb = Frunza | Nod Integer Arb Arb deriving (Show, Eq)
 
-
 minBST :: Arb -> Integer
 minBST (Nod i Frunza _)= i
 minBST (Nod i (Nod j k l) Frunza) = minBST (Nod j k l)
