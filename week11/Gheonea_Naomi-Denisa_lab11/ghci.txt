@@ -1,0 +1,614 @@
+comshiro@Ubuntu24:~/PF/week11$ ghci
+GHCi, version 9.4.8: https://www.haskell.org/ghc/  :? for help
+ghci> :load lab11.hs
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+Ok, one module loaded.
+ghci> Just (l1, []) >>= goFwd >>= goFwd
+
+<interactive>:2:7: error: Variable not in scope: l1
+
+<interactive>:2:19: error:
+    Variable not in scope: goFwd :: (a2, [a0]) -> Maybe a1
+
+<interactive>:2:29: error:
+    Variable not in scope: goFwd :: a1 -> Maybe b
+ghci> :clear
+unknown command ':clear'
+use :? for help.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+
+lab11.hs:38:12: error:
+    • Couldn't match expected type: Zipper -> Tree
+                  with actual type: Maybe b0
+    • Possible cause: ‘(>>=)’ is applied to too many arguments
+      In the expression:
+          Just z1 >>= goLeft >>= goLeft >>= update 999 original ::
+            Zipper -> Tree
+      In an equation for ‘example1’:
+          example1
+            = Just z1 >>= goLeft >>= goLeft >>= update 999 original ::
+                Zipper -> Tree
+   |
+38 | example1 = Just z1 >>= goLeft >>= goLeft >>= update 999original :: Zipper -> Tree
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lab11.hs:38:46: error:
+    • Couldn't match expected type: Zipper -> Maybe b0
+                  with actual type: Maybe Zipper
+    • Possible cause: ‘update’ is applied to too many arguments
+      In the second argument of ‘(>>=)’, namely ‘update 999 original’
+      In the expression:
+          Just z1 >>= goLeft >>= goLeft >>= update 999 original ::
+            Zipper -> Tree
+      In an equation for ‘example1’:
+          example1
+            = Just z1 >>= goLeft >>= goLeft >>= update 999 original ::
+                Zipper -> Tree
+   |
+38 | example1 = Just z1 >>= goLeft >>= goLeft >>= update 999original :: Zipper -> Tree
+   |                                              ^^^^^^^^^^^^^^^^^^
+
+lab11.hs:38:56: error:
+    • Couldn't match type: Zipper -> Tree
+                     with: (Tree, Trail)
+      Expected: Zipper
+        Actual: Zipper -> Tree
+    • Probable cause: ‘original’ is applied to too few arguments
+      In the second argument of ‘update’, namely ‘original’
+      In the second argument of ‘(>>=)’, namely ‘update 999 original’
+      In the expression:
+          Just z1 >>= goLeft >>= goLeft >>= update 999 original ::
+            Zipper -> Tree
+   |
+38 | example1 = Just z1 >>= goLeft >>= goLeft >>= update 999original :: Zipper -> Tree
+   |                                                        ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+Ok, one module loaded.
+ghci> example
+
+<interactive>:6:1: error:
+    Variable not in scope: example
+    Suggested fix: Perhaps use ‘example1’ (line 38)
+ghci> example1
+Just (Node 12 Leaf Leaf,[L 3 (Node 7 (Node 10 Leaf Leaf) (Node 20 Leaf Leaf)),L 5 (Node 42 (Node 8 Leaf Leaf) Leaf)])
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> example1
+Just (Node 3 (Node 12 Leaf Leaf) (Node 7 (Node 10 Leaf Leaf) (Node 20 Leaf Leaf)),[L 5 (Node 42 (Node 8 Leaf Leaf) Leaf)])
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> example2
+Nothing
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+
+lab11.hs:44:1: error:
+    Multiple declarations of ‘example2’
+    Declared at: lab11.hs:41:1
+                 lab11.hs:44:1
+   |
+44 | example2 = Just z1 >>= goRight >>= goRight >>= update 1 >>= goUp
+   | ^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+Ok, one module loaded.
+ghci> example3
+Nothing
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+
+lab11.hs:47:36: error: parse error on input ‘>>=’
+   |
+47 | example4 = Just z1 >>= goRight >>= >>= update 1 >>= goUp
+   |                                    ^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+Ok, one module loaded.
+ghci> example4
+Just (Node 5 (Node 3 (Node 1 Leaf Leaf) (Node 7 (Node 10 Leaf Leaf) (Node 20 Leaf Leaf))) (Node 1 (Node 8 Leaf Leaf) Leaf),[])
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> example5
+Just ([7,0,6,42],[3])
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+Ok, one module loaded.
+ghci> example5
+Just ([7,0,6,42],[3])
+ghci> example6
+Just ([],[42,6,0,7,3])
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+
+lab11.hs:71:1: error: parse error on input ‘import’
+   |
+71 | import Prelude hiding (Left, Right)
+   | ^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:83:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+83 | Node 4 [Node 1 [], Node 2 [], Node 22 [], Node 33[] ],
+   | ^
+Failed, no modules loaded.
+ghci> :load lab11.hs
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:81:1: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+   |
+81 | Node 4 [Node 1 [], Node 2 [], Node 22 [], Node 33[] ],
+   | ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:92:68: error: parse error on input ‘)’
+   |
+92 | goDown ( (Node x (t:tl) : tl'), trail) = (  (t:tl), Down _ : trail))
+   |                                                                    ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:102:8: error: Tuple section in pattern context
+    |
+102 | goBack ( , Down x _ :trail) = (Node x parent, trail) 
+    |        ^^^^^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:98:1: error:
+    Parse error: module header, import declaration
+    or top-level declaration expected.
+   |
+98 | change _ (Node [], ) 
+   | ^^^^^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:71:1: error:
+    Multiple declarations of ‘Tree’
+    Declared at: lab11.hs:2:1
+                 lab11.hs:71:1
+   |
+71 | data Tree = Node Int [Tree] deriving (Show, Eq)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lab11.hs:71:13: error:
+    Multiple declarations of ‘Node’
+    Declared at: lab11.hs:2:20
+                 lab11.hs:71:13
+   |
+71 | data Tree = Node Int [Tree] deriving (Show, Eq)
+   |             ^^^^^^^^^^^^^^^
+
+lab11.hs:74:1: error:
+    Multiple declarations of ‘Crumb’
+    Declared at: lab11.hs:11:1
+                 lab11.hs:74:1
+   |
+74 | data Crumb = Down Int| Right Tree deriving (Show, Eq)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lab11.hs:76:1: error:
+    Multiple declarations of ‘Trail’
+    Declared at: lab11.hs:13:1
+                 lab11.hs:76:1
+   |
+76 | type Trail = [Crumb]
+   | ^^^^^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:71:1: error:
+    Multiple declarations of ‘Tree’
+    Declared at: lab11.hs:2:1
+                 lab11.hs:71:1
+   |
+71 | data Tree = Node Int [Tree] deriving (Show, Eq)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lab11.hs:71:13: error:
+    Multiple declarations of ‘Node’
+    Declared at: lab11.hs:2:20
+                 lab11.hs:71:13
+   |
+71 | data Tree = Node Int [Tree] deriving (Show, Eq)
+   |             ^^^^^^^^^^^^^^^
+
+lab11.hs:74:1: error:
+    Multiple declarations of ‘Crumb’
+    Declared at: lab11.hs:11:1
+                 lab11.hs:74:1
+   |
+74 | data Crumb = Down Int| Right Tree deriving (Show, Eq)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:71:1: error:
+    Multiple declarations of ‘Tree’
+    Declared at: lab11.hs:2:1
+                 lab11.hs:71:1
+   |
+71 | data Tree = Node Int [Tree] deriving (Show, Eq)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lab11.hs:71:13: error:
+    Multiple declarations of ‘Node’
+    Declared at: lab11.hs:2:20
+                 lab11.hs:71:13
+   |
+71 | data Tree = Node Int [Tree] deriving (Show, Eq)
+   |             ^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:71:14: error:
+    Multiple declarations of ‘Node’
+    Declared at: lab11.hs:2:20
+                 lab11.hs:71:14
+   |
+71 | data Tree2 = Node Int [Tree] deriving (Show, Eq)
+   |              ^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:71:14: error:
+    Multiple declarations of ‘Node’
+    Declared at: lab11.hs:2:20
+                 lab11.hs:71:14
+   |
+71 | data Tree2 = Node Int [Tree2] deriving (Show, Eq)
+   |              ^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:87:42: error:
+    • Couldn't match expected type ‘Crumb’ with actual type ‘CrumbTree’
+    • In the pattern: Down i
+      In the pattern: Down i : tl
+      In an equation for ‘atPos’:
+          atPos (Nod _ (Nod x target : rest) : _) (Down i : tl)
+            = atPos target tl
+   |
+87 | atPos (Nod _ (Nod x target : rest) : _) (Down i : tl) = atPos target tl
+   |                                          ^^^^^^
+
+lab11.hs:88:19: error:
+    • Couldn't match expected type ‘Crumb’ with actual type ‘CrumbTree’
+    • In the pattern: Right _
+      In the pattern: Right _ : tl
+      In an equation for ‘atPos’:
+          atPos (_ : rest) (Right _ : tl) = atPos rest tl
+   |
+88 | atPos (_ : rest) (Right _ : tl) = atPos rest tl
+   |                   ^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+Ok, one module loaded.
+ghci> atPos [t] [Down, Right, Down, Right, Right]
+
+<interactive>:36:12: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Int -> CrumbTree’
+    • Probable cause: ‘Down’ is applied to too few arguments
+      In the expression: Down
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:36:18: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:36:25: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Int -> CrumbTree’
+    • Probable cause: ‘Down’ is applied to too few arguments
+      In the expression: Down
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:36:31: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:36:38: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+ghci> x = [1,4,2,4]
+ghci> [x !!! 1]
+
+<interactive>:38:4: error:
+    Variable not in scope: (!!!) :: [a0] -> t0 -> a
+    Suggested fix: Perhaps use ‘!!’ (imported from Prelude)
+ghci> [x !! 1]
+[4]
+ghci> [x !! 0]
+[1]
+ghci> t !! 1
+
+<interactive>:41:1: error:
+    • Couldn't match expected type ‘[a]’ with actual type ‘Tree2’
+    • In the first argument of ‘(!!)’, namely ‘t’
+      In the expression: t !! 1
+      In an equation for ‘it’: it = t !! 1
+    • Relevant bindings include it :: a (bound at <interactive>:41:1)
+ghci> [t !! 1]
+
+<interactive>:42:2: error:
+    • Couldn't match expected type ‘[a]’ with actual type ‘Tree2’
+    • In the first argument of ‘(!!)’, namely ‘t’
+      In the expression: t !! 1
+      In the expression: [t !! 1]
+    • Relevant bindings include it :: [a] (bound at <interactive>:42:1)
+ghci> atPos [t] [Down, Right, Down, Right, Right]
+
+<interactive>:43:12: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Int -> CrumbTree’
+    • Probable cause: ‘Down’ is applied to too few arguments
+      In the expression: Down
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:43:18: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:43:25: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Int -> CrumbTree’
+    • Probable cause: ‘Down’ is applied to too few arguments
+      In the expression: Down
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:43:31: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:43:38: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+ghci> atPos [t] [Down, Right, Down, Right, Right]
+
+<interactive>:44:12: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Int -> CrumbTree’
+    • Probable cause: ‘Down’ is applied to too few arguments
+      In the expression: Down
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:44:18: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:44:25: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Int -> CrumbTree’
+    • Probable cause: ‘Down’ is applied to too few arguments
+      In the expression: Down
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:44:31: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:44:38: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+
+lab11.hs:88:13: error:
+    • Conflicting definitions for ‘t’
+      Bound at: lab11.hs:88:13
+                lab11.hs:88:29
+    • In an equation for ‘atPos’
+   |
+88 | atPos (_ : (t:tail)) (Right t tail : tl) = atPos rest tl
+   |             ^^^^^^^^^^^^^^^^^
+
+lab11.hs:88:15: error:
+    • Conflicting definitions for ‘tail’
+      Bound at: lab11.hs:88:15-18
+                lab11.hs:88:31-34
+    • In an equation for ‘atPos’
+   |
+88 | atPos (_ : (t:tail)) (Right t tail : tl) = atPos rest tl
+   |               ^^^^^^^^^^^^^^^^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:88:19: error:
+    • The constructor ‘Right’ should have 1 argument, but has been given none
+    • In the pattern: Right
+      In the pattern: Right : tl
+      In an equation for ‘atPos’:
+          atPos (_ : rest) (Right : tl) = atPos rest tl
+   |
+88 | atPos (_ : rest) (Right  : tl) = atPos rest tl
+   |                   ^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+Ok, one module loaded.
+ghci> atPos [t] [Down, Right, Down, Right, Right]
+
+<interactive>:48:12: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Int -> CrumbTree’
+    • Probable cause: ‘Down’ is applied to too few arguments
+      In the expression: Down
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:48:18: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:48:25: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Int -> CrumbTree’
+    • Probable cause: ‘Down’ is applied to too few arguments
+      In the expression: Down
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:48:31: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+
+<interactive>:48:38: error:
+    • Couldn't match expected type ‘CrumbTree’
+                  with actual type ‘Tree -> CrumbTree’
+    • Probable cause: ‘Right’ is applied to too few arguments
+      In the expression: Right
+      In the second argument of ‘atPos’, namely
+        ‘[Down, Right, Down, Right, ....]’
+      In the expression: atPos [t] [Down, Right, Down, Right, ....]
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+
+lab11.hs:84:12: error:
+    Multiple declarations of ‘Down’
+    Declared at: lab11.hs:74:18
+                 lab11.hs:84:12
+   |
+84 | data Dir = Down | Right deriving (Show, Eq)
+   |            ^^^^
+
+lab11.hs:84:19: error:
+    Multiple declarations of ‘Right’
+    Declared at: lab11.hs:74:28
+                 lab11.hs:84:19
+   |
+84 | data Dir = Down | Right deriving (Show, Eq)
+   |                   ^^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+Ok, one module loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted ) [Source file changed]
+
+lab11.hs:84:12: error: Not a data constructor: ‘down’
+   |
+84 | data Dir = down | right deriving (Show, Eq)
+   |            ^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:84:12: error: Not a data constructor: ‘down’
+   |
+84 | data Dir = down | right deriving (Show, Eq)
+   |            ^^^^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+
+lab11.hs:84:15: error:
+    Multiple declarations of ‘R’
+    Declared at: lab11.hs:11:27
+                 lab11.hs:84:15
+   |
+84 | data Dir = D| R deriving (Show, Eq)
+   |               ^
+Failed, no modules loaded.
+ghci> :r
+[1 of 2] Compiling Main             ( lab11.hs, interpreted )
+Ok, one module loaded.
+ghci> atPos [t] [D, Ri, D, Ri, Ri]
+22
+ghci> 
+ghci> atPos [t] [D, Ri, D, Ri, Ri]
+22
+ghci> 
